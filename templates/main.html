@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Raleway" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}" media="screen,projection">
+    {% block extracss %}
+    {% endblock %}
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="cols12 offset-s1">
+                <nav class="white z-depth-0 hide-on-large-only top-nav">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="#" data-activates="mobile-demo" class="menu blue-text text-darken-2 top-nav full">Menu</a>
+                        <ul class="side-nav" id="mobile-demo">
+                            <li><a href="http://akshatm.com/images/resume.pdf" class="blue-text text-darken-2">Resume</a></li>
+                            <li><a href="http://stackoverflow.com/users/2271269/akshat-mahajan?tab=profile" class="blue-text text-darken-2">StackOverflow</a></li>
+                            <li><a href="https://www.quora.com/profile/Akshat-Mahajan-1/answers?sort=views" class="blue-text text-darken-2">Quora</a></li>
+                            <li><a href="https://www.linkedin.com/in/mahajanakshat" class="blue-text text-darken-2">LinkedIn</a></li>
+                            <li><a href="https://github.com/akshatm" class="blue-text text-darken-2">GitHub</a></li>
+                            <li><a href="/about" class="blue-text text-darken-2">About</a></li>
+                            <li><a href="/projects" class="blue-text text-darken-2">Projects</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col s12 animated fadeIn">
+            <div class="navbar-fixed">
+                <nav class="white z-depth-0 hide-on-med-and-down">
+                <div class="nav-wrapper">
+                    <ul class="left">
+                        <li><a href="/" class="blue-text text-darken-2">Home</a></li>
+                        <li><a href="/about" class="blue-text text-darken-2">About</a></li>
+                        <li><a href="/projects" class="blue-text text-darken-2">Projects</a></li>
+                        <li><a href="http://akshatm.com/images/resume.pdf" class="blue-text text-darken-2">Resume</a></li>
+                        <li><a href="http://stackoverflow.com/users/2271269/akshat-mahajan?tab=profile" class="blue-text text-darken-2">StackOverflow</a></li>
+                        <li><a href="https://www.quora.com/profile/Akshat-Mahajan-1/answers?sort=views" class="blue-text text-darken-2">Quora</a></li>
+                        <li><a href="https://www.linkedin.com/in/mahajanakshat" class="blue-text text-darken-2">LinkedIn</a></li>
+                        <li><a href="mobile.html" class="blue-text text-darken-2">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+            </div>
+        </div>
+    </div>
+    {% block content %} {% endblock %}
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script>
+        // initialize the side nav
+        $('.menu').sideNav({
+            draggable: true
+        });
+    </script>
+    {% block extrajs %}
+    {% endblock %}
+</body>
+
+</html>
