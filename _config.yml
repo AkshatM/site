@@ -1,4 +1,7 @@
 name: Akshat Mahajan
+title: Akshat Mahajan
+description: Infrastructure Engineer
+logo: https://avatars2.githubusercontent.com/u/6730980
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-relative-links
