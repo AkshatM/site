@@ -1,4 +1,4 @@
-I handle the orchestration, configuration, networking, transparency, reliability and development of distributed systems. Here's my [resume](./myresume.pdf). 
+I handle the orchestration, configuration, networking, transparency, reliability and development of distributed systems. Here's my [resume](./resume.pdf). 
 
 My professional experience includes data pipeline development (Hbase, Zookeeper, Yarn); infrastructure automation (Packer, Salt, Terraform, CloudFormation), and orchestration platform development (Kubernetes, Spinnaker). Monitoring and observability are deep interests of mine. 
 
