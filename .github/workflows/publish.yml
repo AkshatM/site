@@ -31,7 +31,6 @@ jobs:
           mkdir output
           mv resume.pdf output/resume.pdf
           awk '{
-            gsub(/<meta name="viewport" content="width=device-width, initial-scale=1" \/>/, "<meta name=\"viewport\" content=\"width=device-width, initial-scale=0, maximum-scale=1\" />")
             gsub(/<meta name="description" content="a marimo app" \/>/, "<meta name=\"description\" content=\"Akshat Mahajan | Distributed Systems Engineer | Personal website\" />")
           } 1' unprocessed.html > output/index.html
       - name: Setup Pages
