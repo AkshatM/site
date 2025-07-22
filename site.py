@@ -5,21 +5,8 @@ app = marimo.App(
     width="full",
     app_title="Akshat Mahajan | Distributed Systems",
     css_file="",
+    html_head_file="head.html",
 )
-
-
-@app.cell
-def _(mo):
-    mo.hstack(
-        [
-            mo.md(f"[`me at akshatmahajan dot com`](mailto:me@akshatmahajan.com)"),
-            mo.md("[`resume`](https://akshatmahajan.com/resume.pdf)"),
-            mo.md(f"[`linkedin`](https://www.linkedin.com/in/mahajanakshat/)"),
-            mo.md(f"[`github`](https://github.com/AkshatM)"),
-        ],
-        justify="space-between",
-    )
-    return
 
 
 @app.cell
@@ -50,7 +37,7 @@ def _(mo):
     <span style='font-size: 3em'>I'm proud of shipping:</span>
 
     * <span style='font-size: 2em'>[**Web Bot Auth**](https://blog.cloudflare.com/verified-bots-with-cryptography/) — a public-key cryptography identity system for bots that replaces spoofable User Agents and cumbersome IP allow-lists. </span>
-           - <span style='font-size: 1.5em'>I wrote and open-sourced a **Rust** library for it, and built all of Cloudflare's supporting infrastructure to support `Ed25519` real-time verification globally with it. 40K OSS downloads, over 72M served in first month.</span> 
+           - <span style='font-size: 1.5em'>I wrote the first-ever **Rust** library for this IETF RFC, and built the global infrastructure at Cloudflare around it, serving $> 50$ million requests and reaching $40,000$ open-source downloads in the first month.</span> 
 
     * <span style='font-size: 2em'> A blazing fast **10,000x** speedup in tail latency while working on [Argo Smart Routing](https://www.cloudflare.com/application-services/products/argo-smart-routing/), from $90$ milliseconds to $8$ microseconds.</span>
            - <span style='font-size: 1.5em'>I profiled bottlenecks in our asynchronous work queue serving 500,000 requests per second — then replaced the whole thing with an in-memory cache.</span>
@@ -77,13 +64,9 @@ def _(mo):
 
     - <span style='font-size: 1.5em'>an NLP intern at DataWeave, wrangling Word2Vec as we sought to classify millions of short texts</span>
 
-    <span style='font-size: 1.5em'>Before all that, I was modeling paleoclimate mechanics as an undergrad research fellow with NASA.</span>
+    <span style='font-size: 1.5em'>Before all that, I modelled paleoclimate dynamics as an undergrad research fellow with NASA.</span>
 
     <span style='font-size: 1.5em'>I studied Physics at UCLA and earned my Master’s in CS from Brown, but my learning has never stopped.</span>
-
-    <span style='font-size: 1.5em'>Behind all the above is my own autodidactic drive. Outside of work, I'm a fledgling Mandarin speaker, and play classical guitar.</span>
-
-    ---
     """
     )
     return
@@ -91,16 +74,28 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    mo.accordion(
+        {"##What tools are you familiar with?": """###I use *Rust*, *Go*, *Python*, *SQL* and *Typescript* on a regular basis. 
+
+         ###I use *Terraform*, *Salt* and *Kubernetes* for all my infrastructure needs.
+
+         ### I have esoteric knowledge of other things — eBPF, Pandas, and more!""",
+        "##What do you do outside of work?": "###I'm a fledgling student of Mandarin, and I play classical guitar.",
+         "##What do you look like?": mo.image(src="https://avatars.githubusercontent.com/u/6730980",rounded=True,alt="Akshat's face").center()}, multiple=True
+    ).callout()
+    return
+
+
+@app.cell
+def _(mo):
     mo.hstack(
         [
-            mo.stat(value="Rust"),
-            mo.stat(value="Go"),
-            mo.stat(value="Python"),
-            mo.stat(value="Typescript"),
-            mo.stat(value="eBPF"),
-            mo.stat(value="SQL"),
+            mo.md(f"[`me@akshatmahajan.com`](mailto:me@akshatmahajan.com)"),
+            mo.md("[`resume`](https://akshatmahajan.com/resume.pdf)"),
+            mo.md(f"[`linkedin`](https://www.linkedin.com/in/mahajanakshat/)"),
+            mo.md(f"[`github`](https://github.com/AkshatM)"),
         ],
-        justify="center",
+        justify="space-between",
     )
     return
 
