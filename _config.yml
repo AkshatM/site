@@ -2,11 +2,10 @@ name: Akshat Mahajan
 title: Akshat Mahajan
 description: Distributed Systems Engineer
 logo: https://avatars2.githubusercontent.com/u/6730980
-theme: jekyll-theme-minimal
 plugins:
   - jekyll-relative-links
 relative_links:
   enabled: true
   collections: true
 include:
-  - README.md
+  - site.html
