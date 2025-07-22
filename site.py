@@ -4,7 +4,7 @@ __generated_with = "0.14.12"
 app = marimo.App(
     width="columns",
     app_title="Akshat Mahajan | Distributed Systems",
-    css_file="custom.css",
+    css_file="",
 )
 
 
@@ -41,7 +41,7 @@ def _(mo):
 
     * <span style='font-size: 2em'>[**Web Bot Auth**](https://blog.cloudflare.com/verified-bots-with-cryptography/) — a public-key cryptography system for bots to identify themselves on the open Internet. </span>
            - <span style='font-size: 1.5em'>I wrote and open-sourced a library for [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html) in **Rust**, and built all of Cloudflare's supporting infrastructure to support `Ed25519` real-time verification globally.</span> 
-       
+
     * <span style='font-size: 2em'> A blazing fast **10,000x** speedup in tail latency while working on [Argo Smart Routing](https://www.cloudflare.com/application-services/products/argo-smart-routing/), from $90$ milliseconds to $8$ microseconds.</span>
            - <span style='font-size: 1.5em'>I profiled bottlenecks in our asynchronous work queue serving 500,000 requests per second — then replaced the whole thing with an in-memory cache.</span>
     """
@@ -84,6 +84,16 @@ def _(mo):
 @app.cell
 def _(mo):
     mo.hstack([mo.stat(value="Rust"), mo.stat(value="Go"), mo.stat(value="Python"), mo.stat(value="Typescript"), mo.stat(value="eBPF"), mo.stat(value="SQL")],justify='center')
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
     return
 
 

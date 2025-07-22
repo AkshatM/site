@@ -22,6 +22,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          python -m pip install marimo
+          marimo export html site.py -o unprocessed.html --force --no-include-code
+      - name: Post-process output
+        run: |
+          mkdir output
+          mv resume.pdf output/resume.pdf
+          awk '{
+            gsub(/<meta name="viewport" content="width=device-width, initial-scale=1" \/>/, "<meta name=\"viewport\" content=\"width=device-width, initial-scale=0, maximum-scale=1\" />")
+            gsub(/<meta name="description" content="a marimo app" \/>/, "<meta name=\"description\" content=\"Akshat Mahajan | Distributed Systems Engineer | Personal website\" />")
+          } 1' unprocessed.html > output/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
