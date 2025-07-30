@@ -1,0 +1,12 @@
+---
+interface Props {
+	href: string;
+	code?: bool
+}
+
+const { href, code = false } = Astro.props;
+---
+
+{
+    code ? <code><a href={href} class="underline hover:decoration-blue-600 decoration-2"><slot /></a></code> : <a href={href} class="underline hover:decoration-blue-600 decoration-2"><slot /></a>
+}

@@ -1,0 +1,9 @@
+---
+interface Props {
+	color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<mark class={"rounded-bl-lg rounded-tr-lg p-1 " + color}><slot /></mark>
