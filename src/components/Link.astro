@@ -8,5 +8,5 @@ const { href, code = false } = Astro.props;
 ---
 
 {
-    code ? <code><a href={href} class="underline hover:decoration-blue-600 decoration-2"><slot /></a></code> : <a href={href} class="underline hover:decoration-blue-600 decoration-2"><slot /></a>
+    code ? <code><a href={href} class="underline hover:decoration-blue-600 decoration-2 underline-offset-8 focus:text-fuchsia-400"><slot /></a></code> : <a href={href} class="underline hover:decoration-blue-600 decoration-2 underline-offset-8 focus:text-fuchsia-400"><slot /></a>
 }
