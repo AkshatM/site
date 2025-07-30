@@ -1,0 +1,20 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Link from '../components/Link.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-slate-900 dark:text-rose-100">
+		<main>
+			<div class="flex flex-col min-h-screen font-[Lora] align-center p-[2rem] gap-[3rem]">
+            <slot />
+			</div>
+		</main>
+	</body>
+</html>

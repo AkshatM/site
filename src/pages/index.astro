@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Link from '../components/Link.astro';
+import Highlight from '../components/Highlight.astro';
+import { Image } from 'astro:assets';
+import photo from '../assets/professional-photo.jpg';
+---
+
+<Base>
+	<h1 class="text-6xl md:text-8xl lg:text-9xl text-center">Hi. I'm Akshat.</h1>
+	<h2 class="text-center text-4xl md:text-6xl">I build <strong>bleeding-edge</strong> <span class="decoration-wavy underline decoration-teal-500">distributed systems</span></h2>
+	<Image src={photo} alt="A photo of Akshat in his Cambridge, MA location" width="300" height="300" class="mx-auto rounded-[50%]" />
+	<div class="mx-auto w-80 sm:w-100 lg:w-200 grid grid-cols-1 text-justify gap-6">
+		<p class="text-xl sm:text-2xl text-justify">
+		<span class="font-bold">At Cloudflare, I wrote the first-ever Rust library</span> 
+		for <Link href="https://blog.cloudflare.com/verified-bots-with-cryptography" code={true}>web-bot-auth</Link>, 
+		serving <span class="font-bold">40K+</span> downloads and <span class="font-bold">50 million</span> agent requests in just a month.
+		</p>
+		<p class="text-xl sm:text-2xl sm:text-justify">
+		<span class="font-bold">I've reduced tail latencies</span> on <Link href="https://www.cloudflare.com/application-services/products/argo-smart-routing/">Argo Smart Routing</Link> by <strong>10,000x</strong>, turning milliseconds into microseconds with careful performance tuning.
+		</p>
+		<p class="text-xl sm:text-2xl sm:text-justify">
+		On a regular basis, I use <Highlight color="bg-red-500">Rust</Highlight>, <Highlight color="bg-sky-500">Golang</Highlight>, <Highlight class="bg-yellow-300">Python</Highlight>, <Highlight color="bg-fuchsia-400">Typescript</Highlight> and <Highlight color="bg-emerald-400">SQL</Highlight>.
+		</p>
+		<p class="text-xl sm:text-2xl sm:text-justify">But good engineers learn the tools they need - I've dabbled in OCaML, eBPF, and even React.</p>
+		<hr class="border-t-4">
+		<p class="text-xl sm:text-2xl sm:text-justify">
+		<span class="font-bold">I've been an SRE / DevOps engineer</span> at <Link href="https://construction.autodesk.com/products/plangrid/">PlanGrid</Link> (YC '12) and <Link href="https://www.brightedge.com/">BrightEdge</Link>. I have an M. Sc. in CS from <Link href="https://www.brown.edu/">Brown</Link>.
+		</p>
+		<hr class="border-t-4">
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
+			<Link code={true} href="mailto:me@akshatmahajan.com">Email</Link>
+			<Link code={true} href="/resume.pdf">CV</Link>
+			<Link code={true} href="https://github.com/AkshatM">GitHub</Link>
+			<Link code={true} href="https://www.linkedin.com/in/mahajanakshat/">LinkedIn</Link>
+		</div>
+	</div>
+</Base>
