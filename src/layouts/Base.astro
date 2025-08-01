@@ -1,12 +1,13 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Headshot from '../assets/professional-photo.jpg';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image={Headshot} />
 	</head>
 	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-[#1C1C1C]">
 		<header>
