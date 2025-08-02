@@ -24,48 +24,43 @@ import Headshot from '../assets/professional-photo.jpg';
 	</head>
 	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-[#1C1C1C]">
 		<header role="banner">
-		<nav role="navigation" aria-label="Site navigation">
-			<!-- Hamburger Menu -->
-			<div class="fixed bottom-4 right-4 z-50">
-				<!-- Hamburger Button -->
-				<button 
-					id="hamburgerToggle"
-					class="p-2 rounded-full bg-black/20 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"
-					aria-label="Open site navigation menu"
-					aria-expanded="false"
-					aria-haspopup="menu"
-					aria-controls="hamburgerDropdown"
-				>
-					<!-- Hamburger Icon -->
-					<svg 
-						class="w-5 h-5 text-black dark:text-white" 
-						fill="none" 
-						stroke="currentColor" 
-						viewBox="0 0 24 24"
-						alt="Hamburger menu icon"
-					>
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-					</svg>
-				</button>
-				
-				<!-- Dropdown Menu -->
-				<div 
-					id="hamburgerDropdown"
-					role="menu"
-					aria-labelledby="hamburgerToggle"
-					class="absolute bottom-full right-0 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 min-w-[163px] opacity-0 invisible transform translate-y-2 transition-all duration-200 ease-out"
-				>
-					<button 
-						id="darkModeToggle"
-						role="menuitem"
-						aria-label="Toggle between light and dark theme"
-						class="w-full px-4 py-3 text-left text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-150"
-					>
-						Toggle dark mode
-					</button>
+			<!-- Standard Navbar -->
+			<nav role="navigation" aria-label="Site navigation" class="bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-gray-700">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="flex justify-between items-center h-16">
+						<!-- Left side: Name and Dark Mode Toggle -->
+						<div class="flex items-center space-x-4">
+							<span class="text-sm font-medium text-gray-900 dark:text-gray-100">Akshat Mahajan</span>
+							<button 
+								id="darkModeToggle"
+								aria-label="Toggle between light and dark theme"
+								class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+							>
+								<!-- Dark Mode Icon -->
+								<svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+								</svg>
+								<svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<circle cx="12" cy="12" r="5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="12" y1="1" x2="12" y2="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="12" y1="21" x2="12" y2="23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="1" y1="12" x2="3" y2="12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="21" y1="12" x2="23" y2="12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+						</div>
+						
+						<!-- Right side: Empty section for future use -->
+						<div class="flex items-center space-x-4">
+							<!-- Future navigation items will go here -->
+						</div>
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
 		</header>
 		<main role="main" aria-label="Main content">
 			<div class="flex flex-col min-h-screen font-[Lora] align-center p-[2rem] gap-[3rem]">
@@ -74,69 +69,40 @@ import Headshot from '../assets/professional-photo.jpg';
 		</main>
 
 		<script>
-			// Hamburger menu and dark mode functionality
-			const hamburgerToggle = document.getElementById('hamburgerToggle');
-			const hamburgerDropdown = document.getElementById('hamburgerDropdown');
+			// Dark mode functionality
 			const darkModeToggle = document.getElementById('darkModeToggle');
 			const html = document.documentElement;
-			let isDropdownOpen = false;
+			const moonIcon = document.getElementById('moonIcon');
+			const sunIcon = document.getElementById('sunIcon');
+
+			// Function to update icon visibility based on theme
+			function updateIcon(isDark) {
+				if (moonIcon && sunIcon) {
+					moonIcon.classList.toggle('hidden', isDark);
+					sunIcon.classList.toggle('hidden', !isDark);
+				}
+			}
 
 			// Check for saved theme preference or default to light mode
 			const savedTheme = localStorage.getItem('theme');
 			if (savedTheme) {
-				html.classList.toggle('dark', savedTheme === 'dark');
+				const isDark = savedTheme === 'dark';
+				html.classList.toggle('dark', isDark);
+				updateIcon(isDark);
 			} else {
 				// Check system preference
 				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 				html.classList.toggle('dark', prefersDark);
+				updateIcon(prefersDark);
 			}
-
-			// Toggle hamburger dropdown
-			function toggleDropdown() {
-				if (!hamburgerDropdown || !hamburgerToggle) return;
-				isDropdownOpen = !isDropdownOpen;
-				
-				// Update ARIA attributes
-				hamburgerToggle.setAttribute('aria-expanded', isDropdownOpen.toString());
-				
-				if (isDropdownOpen) {
-					hamburgerDropdown.classList.remove('opacity-0', 'invisible', 'translate-y-2');
-					hamburgerDropdown.classList.add('opacity-100', 'visible', 'translate-y-0');
-				} else {
-					hamburgerDropdown.classList.add('opacity-0', 'invisible', 'translate-y-2');
-					hamburgerDropdown.classList.remove('opacity-100', 'visible', 'translate-y-0');
-				}
-			}
-
-			// Hamburger button click handler
-			hamburgerToggle?.addEventListener('click', (e) => {
-				e.stopPropagation();
-				toggleDropdown();
-			});
 
 			// Dark mode toggle handler
 			darkModeToggle?.addEventListener('click', () => {
 				const isDark = html.classList.contains('dark');
-				html.classList.toggle('dark', !isDark);
-				localStorage.setItem('theme', !isDark ? 'dark' : 'light');
-				// Close dropdown after toggling
-				toggleDropdown();
-			});
-
-			// Close dropdown when clicking outside
-			document.addEventListener('click', (e) => {
-				if (isDropdownOpen && hamburgerToggle && hamburgerDropdown && e.target instanceof Node) {
-					if (!hamburgerToggle.contains(e.target) && !hamburgerDropdown.contains(e.target)) {
-						toggleDropdown();
-					}
-				}
-			});
-
-			// Close dropdown on escape key
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && isDropdownOpen) {
-					toggleDropdown();
-				}
+				const newTheme = !isDark;
+				html.classList.toggle('dark', newTheme);
+				updateIcon(newTheme);
+				localStorage.setItem('theme', newTheme ? 'dark' : 'light');
 			});
 		</script>
 	</body>
