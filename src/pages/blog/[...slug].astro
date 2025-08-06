@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostTitleCard from '../../components/PostTitleCard.astro';
+
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+---
+
+<Base>
+	<h2 id="about-heading" class="sr-only">About Akshat</h2>
+	<div class="mx-auto w-80 sm:w-150 md:w-150 lg:w-200 grid grid-cols-1 text-justify gap-6">	
+    	<PostTitleCard title={post.data.title} />
+		<article class="prose lg:prose-xl">
+			<Content />
+		</article>
+	</div>
+</Base>

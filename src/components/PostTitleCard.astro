@@ -1,0 +1,19 @@
+---
+interface Props {
+	title: string;
+    href?: string;
+}
+
+const { title, href = "" } = Astro.props;
+---
+
+<div class="shadow-2xs flex flex-col gap-[1rem]">
+    { href ? 
+        <a href={href}>
+        <div class="text-4xl md:text-5xl lg:text-6xl border-l-4 p-4 border-red-500 text-left font-semibold" set:html={title} />
+        </a>
+        : 
+        <div class="text-4xl md:text-5xl lg:text-6xl border-l-4 p-4 border-blue-500 text-left font-semibold" set:html={title} />
+    }
+    <div class="text-lg">August 6th, 2025</div>
+</div>

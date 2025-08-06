@@ -10,3 +10,5 @@
 pre {
   padding: 10px;
 }
+
+@plugin "@tailwindcss/typography";
