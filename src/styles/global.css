@@ -8,12 +8,12 @@
 }
 
 section[role="main"] {
-  @apply my-auto lg:max-w-3xl py-8 px-8 md:px-0;
+  @apply lg:max-w-3xl px-8 md:px-0;
   max-inline-size: 60ch;
 }
 
 section[role="main"] h1 {
-  @apply text-5xl md:text-7xl my-[2.25rem];
+  @apply text-5xl md:text-7xl mb-[2.25rem];
 }
 
 section[role="main"] h2 {
@@ -24,6 +24,6 @@ section[role="main"] p {
   @apply text-xl sm:text-2xl my-[2rem];
 }
 
-section[role="main"] a {
+a {
   @apply underline hover:decoration-blue-600 decoration-2 underline-offset-4 focus:text-fuchsia-400;
 }

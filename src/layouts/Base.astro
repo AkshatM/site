@@ -22,19 +22,13 @@ import Headshot from '../assets/professional-photo.jpg';
 			}
 		</style>
 	</head>
-	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-zinc-950 font-[Lora] min-h-screen grid md:grid-cols-[1fr_auto_1fr] md:gap-[2rem]">
+	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-zinc-950 font-[Lora] min-h-screen grid md:grid-cols-[1fr_auto_1fr] gap-[2rem] my-[2rem]">
 		<header role="banner">
-		</header>
-		<main role="main" aria-label="Main content">
-			<article>
-            <slot />
-			</article>
-		</main>
-		<footer>
+			<nav class="flex md:flex-col flex-row justify-center align-end text-center gap-[1rem] p-[1rem]">
 			<button 
 					id="darkModeToggle"
 					tabindex="1"
-					class="fixed bottom-4 right-4 z-50 p-2 rounded-full bg-black/20 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"
+					class="w-fit self-center p-2 rounded-full bg-black/20 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"
 					aria-label="Toggle dark mode"
 			>
 					<!-- Sun icon (visible in dark mode) -->
@@ -56,8 +50,23 @@ import Headshot from '../assets/professional-photo.jpg';
 							<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 					</svg>
 			</button>
+			<a href="/" class="text-3xl">?</a>
+			<a href="https://anaphora.substack.com/" class="text-3xl">✏️</a>
+			</nav>
+		</header>
+		<main role="main" aria-label="Main content">
+			<article>
+            <slot />
+			</article>
+		</main>
+		<footer>
+			<div class="flex md:flex-col justify-center text-left gap-[1rem]">
+				<a href="mailto:me@akshatmahajan.com" aria-label="Send email to Akshat" class="text-xl">Email</a>
+				<a href="/resume.pdf" aria-label="Download Akshat's resume PDF" class="text-xl">Resumé</a>
+				<a href="https://github.com/AkshatM" aria-label="Visit Akshat's GitHub profile" class="text-xl">GitHub</a>
+				<a href="https://www.linkedin.com/in/mahajanakshat/" aria-label="Visit Akshat's LinkedIn profile" class="text-xl">LinkedIn</a>
+			</div>
 		</footer>
-
 		<script>
 			// Dark mode functionality
 			const darkModeToggle = document.getElementById('darkModeToggle');
