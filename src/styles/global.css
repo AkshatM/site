@@ -7,6 +7,23 @@
   src: url("/fonts/Lora/Lora-VariableFont_wght.ttf") format("truetype");
 }
 
-pre {
-  padding: 10px;
+section[role="main"] {
+  @apply my-auto mx-auto lg:max-w-3xl py-8 px-8 md:px-0;
+  max-inline-size: 60ch;
+}
+
+section[role="main"] h1 {
+  @apply text-5xl md:text-7xl my-[2.25rem];
+}
+
+section[role="main"] h2 {
+  @apply text-4xl md:text-5xl lg:text-5xl my-[2rem];
+}
+
+section[role="main"] p {
+  @apply text-xl sm:text-2xl my-[2rem];
+}
+
+section[role="main"] a {
+  @apply underline hover:decoration-blue-600 decoration-2 underline-offset-4 focus:text-fuchsia-400;
 }

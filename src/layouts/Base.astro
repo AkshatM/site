@@ -22,7 +22,7 @@ import Headshot from '../assets/professional-photo.jpg';
 			}
 		</style>
 	</head>
-	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-[#1C1C1C]">
+	<body class="text-black bg-[#F5F5F5] dark:text-white dark:bg-zinc-950">
 		<header role="banner">
 		<!-- Dark Mode Toggle -->
 			<button 
@@ -53,9 +53,9 @@ import Headshot from '../assets/professional-photo.jpg';
 			</nav>
 		</header>
 		<main role="main" aria-label="Main content">
-			<div class="flex flex-col min-h-screen font-[Lora] align-center p-[2rem] gap-[2.25rem]">
+			<article class="flex flex-col font-[Lora] min-h-screen">
             <slot />
-			</div>
+			</article>
 		</main>
 
 		<script>

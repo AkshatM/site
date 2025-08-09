@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Link from '../components/Link.astro';
 import Highlight from '../components/Highlight.astro';
 import { Code } from 'astro:components';
 import { Image } from 'astro:assets';
@@ -8,30 +7,28 @@ import Headshot from '../assets/professional-photo.jpg'
 ---
 
 <Base>
-	<section role="main" aria-labelledby="about-heading" class="my-auto mx-auto w-80 sm:w-150 md:w-150 lg:w-200 grid grid-cols-1 text-justify gap-[2.25rem]">
-	    <h1 id="hero-heading" class="text-5xl md:text-8xl text-center">Hi, I'm Akshat</h1>
+	<section role="main" aria-labelledby="about-heading">
+	    <h1 id="hero-heading">Hi, I'm Akshat</h1>
 		<h2 id="about-heading" class="sr-only">About Akshat</h2>
-		<h2 class="text-center text-4xl md:text-5xl lg:text-6xl">I build <span class="font-semibold">distributed systems</span></h2>
-		<p class="text-2xl tracking-tight lg:tracking-normal text-justify">
-		I wrote <i><span class="font-bold">the</span></i> Rust library
-		for <Link href="https://crates.io/crates/web-bot-auth" code={true}>web-bot-auth</Link>, 
-		with <span class="font-semibold">50K+</span> downloads and serving over <span class="font-semibold">50 million</span> HTTP requests.
+		<h2>I build distributed systems</h2>
+		<p>I wrote <i><strong>the</strong></i> Rust library for <a href="https://crates.io/crates/web-bot-auth"><code>web-bot-auth</code></a>, 
+		verifying over <strong>50 million</strong> HTTP requests at Cloudflare.
 		</p>
-		<p class="text-2xl sm:text-justify tracking-tight md:tracking-normal">
-		<span class="font-bold">I've built scalable platforms</span> at <Link href="https://www.cloudflare.com/">Cloudflare</Link>, <Link href="https://construction.autodesk.com/products/plangrid/">PlanGrid</Link> and <Link href="https://www.brightedge.com/">BrightEdge</Link>.</p>
-		<p class="text-2xl sm:text-justify tracking-tight lg:tracking-normal">I have degrees in CS from <Link href="https://www.brown.edu/">Brown</Link>, and physics at <Link href="https://www.ucla.edu/">UCLA</Link>.
+		<p>
+		<strong>I've built scalable platforms</strong> at <a href="https://www.cloudflare.com/">Cloudflare</a>, <a href="https://construction.autodesk.com/products/plangrid/">PlanGrid</a> and <a href="https://www.brightedge.com/">BrightEdge</a>.</p>
+		<p>I have degrees in CS from <a href="https://www.brown.edu/">Brown</a>, and physics at <a href="https://www.ucla.edu/">UCLA</a>.
 		</p>
-		<p class="text-2xl sm:text-justify tracking-tight lg:tracking-normal">
-		I use <Highlight color="bg-red-400">Rust</Highlight>, <Highlight color="bg-sky-400">Golang</Highlight>, <Highlight class="bg-yellow-300">Python</Highlight>, <Highlight color="bg-fuchsia-400">Typescript</Highlight> and <Highlight color="bg-emerald-400">SQL</Link>.
+		<p>
+		I use <Highlight color="bg-red-400">Rust</Highlight>, <Highlight color="bg-sky-400">Golang</Highlight>, <Highlight class="bg-yellow-300">Python</Highlight>, <Highlight color="bg-fuchsia-400">Typescript</Highlight> and <Highlight color="bg-emerald-400">SQL</a>.
 		</p>
 		<hr class="border-t-2" role="separator" aria-label="Contact information section">
-		<nav role="navigation" aria-labelledby="contact-heading">
-			<h3 id="contact-heading" class="sr-only">Contact and Social Links</h3>
+		<nav role="navigation" aria-labelledby="contact-heading" class="mt-[2rem]">
+			<h3 id="contact-heading" class="sr-only">Contact and Social as</h3>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
-				<Link code={true} href="mailto:me@akshatmahajan.com" aria-label="Send email to Akshat">Email</Link>
-				<Link code={true} href="/resume.pdf" aria-label="Download Akshat's resume PDF">Resumé</Link>
-				<Link code={true} href="https://github.com/AkshatM" aria-label="Visit Akshat's GitHub profile">GitHub</Link>
-				<Link code={true} href="https://www.linkedin.com/in/mahajanakshat/" aria-label="Visit Akshat's LinkedIn profile">LinkedIn</Link>
+				<a href="mailto:me@akshatmahajan.com" aria-label="Send email to Akshat">Email</a>
+				<a href="/resume.pdf" aria-label="Download Akshat's resume PDF">Resumé</a>
+				<a href="https://github.com/AkshatM" aria-label="Visit Akshat's GitHub profile">GitHub</a>
+				<a href="https://www.linkedin.com/in/mahajanakshat/" aria-label="Visit Akshat's LinkedIn profile">LinkedIn</a>
 			</div>
 		</nav>
 	</section>
