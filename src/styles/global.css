@@ -8,7 +8,7 @@
 }
 
 section[role="main"] {
-  @apply my-auto mx-auto lg:max-w-3xl py-8 px-8 md:px-0;
+  @apply my-auto lg:max-w-3xl py-8 px-8 md:px-0;
   max-inline-size: 60ch;
 }
 
