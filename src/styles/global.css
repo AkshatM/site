@@ -21,7 +21,7 @@ section[role="main"] h2 {
 }
 
 section[role="main"] p {
-  @apply text-xl sm:text-2xl my-[2rem];
+  @apply text-2xl sm:text-2xl my-[1.5rem];
 }
 
 a {
