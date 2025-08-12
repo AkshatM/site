@@ -54,19 +54,7 @@ import Headshot from '../assets/professional-photo.jpg';
 			</button>
 			</nav>
 		</header>
-		<main role="main" aria-label="Main content">
-			<article>
-            <slot />
-			</article>
-		</main>
-		<footer>
-			<div class="flex md:flex-col justify-center text-left gap-[1rem] md:border-l-2 md:pl-8">
-				<a href="mailto:me@akshatmahajan.com" aria-label="Send email to Akshat" class="text-xl">email</a>
-				<a href="/resume.pdf" aria-label="Download Akshat's resume PDF" class="text-xl">resumé</a>
-				<a href="https://github.com/AkshatM" aria-label="Visit Akshat's GitHub profile" class="text-xl">GitHub</a>
-				<a href="https://www.linkedin.com/in/mahajanakshat/" aria-label="Visit Akshat's LinkedIn profile" class="text-xl">LinkedIn</a>
-			</div>
-		</footer>
+		<slot />
 		<script>
 			// Dark mode functionality
 			const darkModeToggle = document.getElementById('darkModeToggle');
@@ -77,10 +65,6 @@ import Headshot from '../assets/professional-photo.jpg';
 			if (savedTheme) {
 				const isDark = savedTheme === 'dark';
 				html.classList.toggle('dark', isDark);
-			} else {
-				// Check system preference
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				html.classList.toggle('dark', prefersDark);
 			}
 
 			// Dark mode toggle handler
