@@ -22,6 +22,8 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading">
+				<h1 set:html={post.data.title} />
+				<blockquote><p set:html={post.data.description} /></blockquote>
 				<Content />
 			</section>
 		</article>

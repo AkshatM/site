@@ -9,36 +9,43 @@
 
 section[role="main"] {
   @apply lg:max-w-3xl px-8 md:px-0;
-  max-inline-size: 60ch;
 }
 
 section[role="main"] * {
-  @apply mb-[1.5rem];
+  @apply mb-[1.3rem] hyphens-auto wrap-break-word;
 }
 
 section[role="main"] h1 {
-  @apply text-7xl;
+  @apply text-7xl mb-[2rem];
 }
 
 section[role="main"] h2 {
-  @apply text-4xl;
+  @apply text-4xl mb-[1.75rem];
 }
 
 section[role="main"] h3 {
-  @apply text-3xl;
+  @apply text-3xl mb-[1.5rem];
 }
 
 section[role="main"] li,
 section[role="main"] p {
-  @apply text-xl sm:text-2xl;
+  @apply text-2xl tracking-normal;
 }
 
 section[role="main"] .astro-code {
-  @apply p-1 w-[330px] sm:w-fit;
+  @apply p-1 w-[330px] sm:w-fit text-xs;
 }
 
 section[role="main"] ol {
   @apply list-decimal;
+}
+
+section[role="main"] .katex-display * {
+  @apply mb-0;
+}
+
+section[role="main"] .katex * {
+  @apply mb-0;
 }
 
 @layer base {
@@ -50,12 +57,8 @@ section[role="main"] ol {
   }
 }
 
-section[role="main"] blockquote p {
-  font-style: italic;
-}
-
 section[role="main"] blockquote {
-  @apply my-[1.5rem] pl-4 border-l-2 border-blue-600;
+  @apply my-[1.5rem] pl-4 border-l-4 border-blue-600 dark:border-red-600;
 }
 
 section[role="main"] hr {
