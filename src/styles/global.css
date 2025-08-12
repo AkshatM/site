@@ -8,15 +8,16 @@
 }
 
 section[role="main"] {
-  @apply lg:max-w-3xl px-8 md:px-0;
+  @apply lg:max-w-3xl px-8 md:px-0 w-full;
+  max-inline-size: 60ch;
 }
 
 section[role="main"] * {
-  @apply mb-[1.3rem] hyphens-auto wrap-break-word;
+  @apply mb-[1.3rem] hyphens-auto;
 }
 
 section[role="main"] h1 {
-  @apply text-7xl mb-[2rem];
+  @apply text-5xl mb-[2rem];
 }
 
 section[role="main"] h2 {
