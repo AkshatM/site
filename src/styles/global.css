@@ -12,16 +12,54 @@ section[role="main"] {
   max-inline-size: 60ch;
 }
 
+section[role="main"] * {
+  @apply mb-[1.5rem];
+}
+
 section[role="main"] h1 {
-  @apply text-5xl md:text-7xl mb-[2.25rem];
+  @apply text-7xl;
 }
 
 section[role="main"] h2 {
-  @apply text-4xl md:text-5xl lg:text-5xl my-[2rem];
+  @apply text-4xl;
 }
 
+section[role="main"] h3 {
+  @apply text-3xl;
+}
+
+section[role="main"] li,
 section[role="main"] p {
-  @apply text-2xl sm:text-2xl my-[1.5rem];
+  @apply text-xl sm:text-2xl;
+}
+
+section[role="main"] .astro-code {
+  @apply p-1 w-[330px] sm:w-fit;
+}
+
+section[role="main"] ol {
+  @apply list-decimal;
+}
+
+@layer base {
+  ul,
+  ol {
+    list-style: revert; /* Restores default list-style-type (disc for ul, decimal for ol) */
+    margin: revert; /* Restores default margin */
+    padding: revert; /* Restores default padding */
+  }
+}
+
+section[role="main"] blockquote p {
+  font-style: italic;
+}
+
+section[role="main"] blockquote {
+  @apply my-[1.5rem] pl-4 border-l-2 border-blue-600;
+}
+
+section[role="main"] hr {
+  @apply mb-[1.5rem];
 }
 
 a {
