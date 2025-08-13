@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostTitleCard from '../../components/PostTitleCard.astro';
+
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+---
+<Base>
+	<main role="main" aria-label="blog content">
+		<article>
+			<section role="main" aria-labelledby="about-heading" class="w-full">
+                <h1>Writings of a Luddite</h1>
+                <blockquote><p>Software should be simple. I expound on the how and why.</p></blockquote>
+                {posts.map((post) => 
+                    <div>
+                        <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
+                    </div>
+                )}
+			</section>
+		</article>
+	</main>
+	<footer>
+		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:pl-8">
+			<a href="/subscribe" class="text-xl">subscribe?</a>
+			<a href="/rss.xml" class="text-xl">rss</a>
+		</div>
+	</footer>
+</Base>

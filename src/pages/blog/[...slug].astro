@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostTitleCard from '../../components/PostTitleCard.astro';
+
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const currentPostIndex = posts.findIndex((post) => post.id == Astro.params.slug);
+const previousPost = currentPostIndex + 1 === posts.length ? undefined : posts[currentPostIndex + 1];
+const nextPost = currentPostIndex === 0 ? undefined : posts[currentPostIndex - 1];
+
+const { Content } = await render(post);
+---
+
+<Base>
+	<main role="main" aria-label="blog content">
+		<article>
+			<section role="main" aria-labelledby="about-heading">
+				<h1 set:html={post.data.title} />
+				<blockquote><p set:html={post.data.description} /></blockquote>
+				<Content />
+				<hr>
+				<div class="text-xs">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href="mailto:me@akshatmahajan.com">Email</a> me.</div>
+				<div class="text-center">© Akshat Mahajan 2025 and onwards</div>
+			</section>
+		</article>
+	</main>
+	<footer>
+		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:pl-8">
+			<a href="/subscribe" class="text-xl">subscribe?</a>
+			{previousPost && <a href={`/blog/${previousPost.id}`} class="text-xl">prev</a>}
+			{nextPost && <a href={`/blog/${nextPost.id}`} class="text-xl">next</a>}
+			<a href="/rss.xml" class="text-xl">rss</a>
+		</div>
+	</footer>
+</Base>
