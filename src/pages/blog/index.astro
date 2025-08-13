@@ -16,23 +16,19 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading" class="w-full">
-                <h1>A Luddite Writes</h1>
-                { post.length !== 0 ?
-				posts.map((post) => 
-                    <div class="my-[1.5rem] pl-4 border-l-4 border-blue-600 dark:border-red-600">
+                <h1>Writings of a Luddite</h1>
+                <blockquote><p>Software should be simple. I expound on the how and why.</p></blockquote>
+                {posts.map((post) => 
+                    <div>
                         <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
-                        <p class="mt-4" set:html={post.data.description} />
                     </div>
-                ) :
-                <div class="my-[1.5rem] pl-4 border-l-4 border-blue-600 dark:border-red-600">
-                        <h3>writing in progress... check back later</h3>
-                </div>}
+                )}
 			</section>
 		</article>
 	</main>
 	<footer>
-		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:border-l-2 md:pl-8">
-			<a href="/" class="text-xl">subscribe?</a>
+		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:pl-8">
+			<a href="/subscribe" class="text-xl">subscribe?</a>
 			<a href="/rss.xml" class="text-xl">rss</a>
 		</div>
 	</footer>

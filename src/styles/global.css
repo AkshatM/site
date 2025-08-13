@@ -18,23 +18,31 @@ section[role="main"] * {
 
 section[role="main"] h1 {
   @apply text-5xl mb-[2rem];
+  line-height: 1.2;
 }
 
 section[role="main"] h2 {
   @apply text-4xl mb-[1.75rem];
+  line-height: 1.2;
 }
 
 section[role="main"] h3 {
   @apply text-3xl mb-[1.5rem];
+  line-height: 1.2;
 }
 
 section[role="main"] li,
 section[role="main"] p {
-  @apply text-2xl tracking-normal;
+  @apply text-xl;
+  line-height: 1.5;
 }
 
-section[role="main"] .astro-code {
-  @apply p-1 w-[330px] sm:w-fit text-xs;
+section[role="main"] p.double-size {
+  @apply text-2xl;
+}
+
+section[role="main"] pre > code {
+  @apply w-[330px];
 }
 
 section[role="main"] ol {
@@ -59,7 +67,11 @@ section[role="main"] .katex * {
 }
 
 section[role="main"] blockquote {
-  @apply my-[1.5rem] pl-4 border-l-4 border-blue-600 dark:border-red-600;
+  @apply my-[1.5rem] p-2 font-medium text-black/80 bg-yellow-100 dark:bg-blue-300 border-2;
+}
+
+section[role="main"] blockquote p {
+  @apply my-0;
 }
 
 section[role="main"] hr {
@@ -67,5 +79,9 @@ section[role="main"] hr {
 }
 
 a {
-  @apply underline hover:decoration-blue-600 decoration-2 underline-offset-4 focus:text-fuchsia-400;
+  @apply underline hover:decoration-blue-600 decoration-2 underline-offset-6 focus:text-fuchsia-400;
+}
+
+sup a {
+  @apply hover:decoration-blue-600 text-red-400 no-underline;
 }

@@ -6,14 +6,16 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://akshatmahajan.com",
-  integrations: [mdx(), sitemap()],
+  integrations: [expressiveCode(), mdx(), sitemap()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {
       themes: {
