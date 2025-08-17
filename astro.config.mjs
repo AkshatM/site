@@ -6,6 +6,8 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeTitleFigure from "rehype-title-figure";
+import remarkToc from "remark-toc";
 import remarkGfm from "remark-gfm";
 import expressiveCode from "astro-expressive-code";
 
@@ -15,14 +17,7 @@ export default defineConfig({
   integrations: [expressiveCode(), mdx(), sitemap()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
-    remarkPlugins: [remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex],
-    shikiConfig: {
-      themes: {
-        light: "catppuccin-mocha",
-        dark: "catppuccin-latte",
-      },
-      wrap: false,
-    },
+    remarkPlugins: [remarkGfm, remarkMath, remarkToc],
+    rehypePlugins: [rehypeKatex, rehypeTitleFigure],
   },
 });

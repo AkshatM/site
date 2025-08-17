@@ -13,7 +13,7 @@ section[role="main"] {
 }
 
 section[role="main"] * {
-  @apply mb-[1.3rem] hyphens-auto;
+  @apply mb-[1.3rem];
 }
 
 section[role="main"] h1 {
@@ -37,6 +37,26 @@ section[role="main"] p {
   line-height: 1.5;
 }
 
+section[role="main"] li {
+  @apply mb-1;
+}
+
+section[role="main"] blockquote {
+  @apply my-[1.5rem] py-2 px-4 font-medium text-black/70 dark:text-white/80;
+}
+
+section[role="main"] blockquote p {
+  @apply my-0;
+}
+
+section[role="main"] .callout blockquote {
+  @apply bg-yellow-100 dark:bg-blue-300 border-2 dark:text-black;
+}
+
+section[role="main"] figcaption {
+  @apply text-center;
+}
+
 section[role="main"] p.double-size {
   @apply text-2xl;
 }
@@ -57,6 +77,16 @@ section[role="main"] .katex * {
   @apply mb-0;
 }
 
+hgroup h1 {
+  @apply text-5xl mb-0;
+  line-height: 1.2;
+}
+
+hgroup p {
+  @apply py-2 px-4 font-medium italic text-black/70 dark:text-white/80;
+  line-height: 1.2;
+}
+
 @layer base {
   ul,
   ol {
@@ -64,14 +94,6 @@ section[role="main"] .katex * {
     margin: revert; /* Restores default margin */
     padding: revert; /* Restores default padding */
   }
-}
-
-section[role="main"] blockquote {
-  @apply my-[1.5rem] p-2 font-medium text-black/80 bg-yellow-100 dark:bg-blue-300 border-2;
-}
-
-section[role="main"] blockquote p {
-  @apply my-0;
 }
 
 section[role="main"] hr {
@@ -84,4 +106,10 @@ a {
 
 sup a {
   @apply hover:decoration-blue-600 text-red-400 no-underline;
+}
+
+section.footnotes::before {
+  @apply text-4xl mb-[2rem];
+  line-height: 1.2;
+  content: "footnotes";
 }

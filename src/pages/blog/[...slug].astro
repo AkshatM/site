@@ -29,12 +29,14 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading">
+						<hgroup>
 				<h1 set:html={post.data.title} />
-				<blockquote><p set:html={post.data.description} /></blockquote>
+				<p set:html={post.data.description} />
+			</hgroup>
 				<Content />
 				<hr>
 				<div class="text-xs">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href="mailto:me@akshatmahajan.com">Email</a> me.</div>
-				<div class="text-center">© Akshat Mahajan 2025 and onwards</div>
+				<div>© 2025, Akshat Mahajan. All rights reserved.</div>
 			</section>
 		</article>
 	</main>

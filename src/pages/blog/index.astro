@@ -16,11 +16,13 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading" class="w-full">
-                <h1>Writings of a Luddite</h1>
-                <blockquote><p>Software should be simple. I expound on the how and why.</p></blockquote>
+			<hgroup>
+				<h1>Writings of a Luddite</h1>
+				<p>Software should be simple. I expound on the how and why.</p>
+			</hgroup>
                 {posts.map((post) => 
                     <div>
-                        <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
+                    <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
                     </div>
                 )}
 			</section>
