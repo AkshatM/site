@@ -1,59 +1,127 @@
 ---
-title: "Look, ma, no zero knowledge proof!"
+title: "Skip the SNARK, Just Pass"
 pubDate: 08/17/2025
-description: "Blind signing with Privacy Pass can be a simpler alternative for many applications. I describe when to use it over a zero-knowledge proof."
+description: "Zero-knowledge conceived as a hammer; Privacy Pass as an alternative model for trustful settings; a deep dive into the protocol"
 ---
 
-Every usecase under the sun, it seems, has a [ZKP](https://www.wikiwand.com/en/articles/Zero-knowledge_proof) to solve it.
+<figure>
+  ![Georges Seurat Study for A Sunday Afternoon on La Grande
+  Jatte](../../assets/privacy-pass-vs-zero-knowledge-proof/cover.jpg "Georges
+  Seurat, 1886")
+  <figcaption>
+    Hazy faces in <i>Study for 'A Sunday Afternoon on La Grande Jatte'</i>.
+    Seurat, 1886.
+  </figcaption>
+</figure>
 
-Google recently [open-sourced](https://github.com/google/longfellow-zk) a ZKP library. In their announcement, they describe a sample application:
+Every scenario under the sun, it seems, has a [zero-knowledge proof](https://www.wikiwand.com/en/articles/Zero-knowledge_proof) waiting to be found.
+
+Earlier this year, Google [open-sourced](https://github.com/google/longfellow-zk) its ZKP library. In the announcement, they describe a sample application:
 
 > So, for example, a person visiting a website can verifiably prove he or she is over 18, without sharing anything else at all.[^1]
 
-Zero-knowledge proofs could save us from AI slop:
+Zero-knowledge proofs might segregate AI slop:
 
 > Moreover, the use of [ZKP] is accelerating due to the urgency with which identity credentials are needed ... to discern humans – and human-generated content – from machines and AI-generated content.[^2]
 
-and avert phishing attempts:
+and avert data breaches:
 
 > Imagine being able to login to websites without worrying about your password getting hacked[^3]
 
-When will it cure cancer?
+Such ardent framing elides an unfortunate, underwhelming truth: **zero knowledge is overkill for these problems**.
 
-# Sometimes you _can_ trust things
+# Some knowledge about zero knowledge
 
-I quite like ZKPs. They have their space in an engineer's arsenal.
+[Enough](https://www.reddit.com/r/crypto/comments/stspyl/is_digital_signature_a_form_of_zero_knowledge/) [people](https://crypto.stackexchange.com/questions/100454/did-digital-signatures-come-from-zero-knowledge-proofs) conflate digital signatures with some form of zero-knowledge that I should clarify.
 
-But this breathless enthusiasm obscures a silly truth: sometimes it's overkill.
+Broadly, when folks discuss zero-knowledge schemes, they usually mean either the [SNARK](https://vitalik.eth.limo/general/2022/06/15/using_snarks.html) family or the [STARK](https://aszepieniec.github.io/stark-anatomy/) one.
 
-Zero-knowledge is about, well, zero trust. They're for when you _need_ to show sensitive information to a party you don't trust, when that party doesn't trust you, and the palace is full of spies.
+Both families utilize complex computational circuits designed to verify arbitrary computations, without revealing what _was_ computed.
 
-However, as, it turns out, there's lots of cases where someone you both trust can just vouch for you instead:
+They are fashionable among blockchains, where the trust setting is perfectly tailored for their needs:
 
-1. Government-issued digital ID cards can confirm age.
-2. Your hardware devices can attest your humanity for you.
-3. Social logins and OAuth can solve passwordless logins.
+- Mutual distrust
+- Sensitive information
+- High transparency
 
-All these options _attest_ to your ability to do something, or be something.
+Because ZKPs guarantee revealing nothing besides a predicate's result, they work as a useful primitive for many cryptographic tasks.
 
-# Wait, what if I **need** to be anonymous?
+Frankly, they're fine. Where the stakes are high, they have an excellent niche.
 
-Likely the reason ZKPs attract so much attention for these examples is the perceived _privacy_ benefit -- the idea that you don't need to be fingerprinted at all.
+## So what's the problem?
 
-The foregoing solutions don't guarantee that. Nearly all of them might share a unique identifier about you -- your email, your IP address, or more.
+People incorrectly assume zero trust is required.
 
-This is important to avoid because fingerprinting enables tracking: somebody could follow you around from site to site, constructing a digital timeline of your activities.
+Consider the same introductory usecases, except this time with a trusted party vouching for you:
 
-Fret not. If you trust an attester but anonymity matters to you, **there is a solution**.
+1. A government certifies your adulthood
+2. A CAPTCHA service attests your humanity
+3. An identity provider logs in on your behalf
 
----
+Much simpler, yes? You might have even done some of this today!
+
+Here, invoking the machinery of SNARK / STARK creates needless friction. These are cases where the data is not _confidential_, but is still _sensitive_ -- the risk is reputational, rather than personal. We are often willing to divulge sensitive information, provided we trust the handler. The technical complexity of a computational circuit is unwarranted.
+
+## ZKPs have a perceived monopoly on vigilance
+
+The main reason ZKPs attract attention is the perceived privacy guarantees: by minimizing the amount of information shared, they prevent any kind of fingerprinting.
+
+Fingerprinting protection is necessary, even in a trusting world. The best data stewards may become compromised or corrupted -- the worst might be incompetent. Paradoxically, vigilance appears necessary where trust is abundant.
+
+Zero-knowledge proofs arrest the imagination by offering a hyper-vigilant world, a feature buttressed by the distressing lack of alternatives. For the longest time, the choice was to either:
+
+1. trust attesters completely (and open yourself to risk)
+2. not to trust anyone at all.
+
+But this dichotomy is illusory. There is a _third_ path, where you supply just enough coarseness to your interactions to avoid fingerprinting.
+
+# Privacy Pass: an alternative
 
 This weekend, I crammed [three](https://www.rfc-editor.org/rfc/rfc9576.html) [IETF](https://www.rfc-editor.org/rfc/rfc9577.html) [RFCs](https://www.rfc-editor.org/rfc/rfc9578.html) in one go. Clocking in at seventy-five pages, it wasn't exactly light reading.
 
-Taken together, they describe the Privacy Pass protocol, which promises a system where:
+Taken together, they describe the Privacy Pass protocol, which is a system where:
 
-1. Your attesters can vouch for you, but not know what you're trying to do with those vouchers.
-2. Services can accept the vouchers, but not necessarily know anything else about you.
+1. Attesters can vouch for you, without knowing what you'll do with those vouchers.
+2. Services can authorize and accept attested vouchers, without being able to fingerprint you.
+
+These vouchers are called _tokens_. They are fungible. They can be accumulated. They can be spent. There is exceedingly low risk of being tied back to you.
+
+In this, they are unlike cookies, the sticky neon signs that most services use today. That is already an example of "adding coarseness" -- all services receive is the token, indistinguishable from the rest.
+
+Here is a complete `Token`, in fact, lifted from the RFC.
+
+```c title="Token schema" frame="terminal"
+struct {
+    uint16_t token_type; // 0x1 or 0x2
+    uint8_t nonce[32];
+    uint8_t challenge_digest[32];
+    uint8_t token_key_id[Nid];
+    uint8_t authenticator[Nk];
+} Token;
+```
+
+These fields each represent the bare minimum for verification. I'm only going to talk about type 2 tokens, which are represented as `0x2` in the `token_type` field.
+
+Here, `nonce` is a _client-generated_ random 32-byte array. That means you or your device creates it.
+
+`challenge_digest` is a SHA-256 hash of a `TokenChallenge`:
+
+```c title="TokenChallenge schema" frame="terminal"
+struct {
+    uint16_t token_type;
+    opaque issuer_name<1..2^16-1>;
+    opaque redemption_context<0..32>;
+    opaque origin_info<0..2^16-1>;
+} TokenChallenge;
+```
+
+`TokenChallenges` are issued by websites or services to clients when they require a token to proceed further:
+
+- The `issuer_name` tells the client where to go to fetch tokens.
+- The `redemption_context` optionally links your session to the service, encoded as a 32-byte value.
+- The `origin_info` is the set of domains the token can be spent on, and works to scope your access to just that service.
+
+Importantly, both `redemption_context` and `origin_info` are private to you and the service. They store the bare minimum needed to handle a session and prevent cross-service token spending.
 
 [^1]: [Opening up ‘Zero-Knowledge Proof’ technology to promote privacy in age assurance](https://blog.google/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/)
 [^2]: [The State of Zero-Knowledge Proofs: From Research to Serious Business](https://www.protocol.ai/blog/zero-knowledge-proofs/)

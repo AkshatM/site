@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PostTitleCard from '../../components/PostTitleCard.astro';
+import { Image } from 'astro:assets';
+import myImage from '../../assets/blog-cover.jpg';
 
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
@@ -17,12 +18,16 @@ const { Content } = await render(post);
 		<article>
 			<section role="main" aria-labelledby="about-heading" class="w-full">
 			<hgroup>
-				<h1>Writings of a Luddite</h1>
-				<p>Notes, networks, projects, code, software and commentary</p>
+				<h1>Typing at the Terminal</h1>
+				<p>Technical essays on software systems: protocols, networks, languages and architecture</p>
 			</hgroup>
+			<figure>
+				<Image src={myImage} alt="Tibet, Himalayas, Nicholas Roerich (1933)" />
+				<figcaption><i>Tibet, Himalayas</i>. Nicholas Roerich, 1933.</figcaption>
+			</figure>
                 {posts.map((post) => 
                     <div>
-                    <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
+                    <a href={`/blog/${post.id}`}><h3 class="text-right" set:html={post.data.title} /></a>
                     </div>
                 )}
 			</section>

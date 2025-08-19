@@ -53,8 +53,9 @@ section[role="main"] .callout blockquote {
   @apply bg-yellow-100 dark:bg-blue-300 border-2 dark:text-black;
 }
 
-section[role="main"] figcaption {
-  @apply text-center;
+section[role="main"] figure figcaption,
+section[role="main"] figure figcaption * {
+  @apply text-center text-xs;
 }
 
 section[role="main"] p.double-size {
@@ -77,14 +78,14 @@ section[role="main"] .katex * {
   @apply mb-0;
 }
 
-hgroup h1 {
-  @apply text-5xl mb-0;
-  line-height: 1.2;
+section[role="main"] hgroup h1 {
+  @apply text-5xl;
+  line-height: 1.5;
 }
 
-hgroup p {
+section[role="main"] hgroup p {
   @apply py-2 px-4 italic bg-stone-200 dark:bg-slate-800;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 @layer base {

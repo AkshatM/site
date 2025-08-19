@@ -29,10 +29,10 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading">
-						<hgroup>
-				<h1 set:html={post.data.title} />
-				<p set:html={post.data.description} />
-			</hgroup>
+				<hgroup>
+					<h1 set:html={post.data.title} />
+					<p set:html={post.data.description} />
+				</hgroup>
 				<Content />
 				<hr>
 				<div class="text-xs">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href="mailto:me@akshatmahajan.com">Email</a> me.</div>
