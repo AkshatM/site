@@ -42,11 +42,11 @@ section[role="main"] li {
 }
 
 section[role="main"] blockquote {
-  @apply my-[1.5rem] py-2 px-4 font-medium text-black/70 dark:text-white/80;
+  @apply my-[1.5rem] px-4 font-medium text-black/70 dark:text-white/80;
 }
 
 section[role="main"] blockquote p {
-  @apply my-0;
+  @apply my-0 text-lg;
 }
 
 section[role="main"] .callout blockquote {
@@ -83,7 +83,7 @@ hgroup h1 {
 }
 
 hgroup p {
-  @apply py-2 px-4 font-medium italic text-black/70 dark:text-white/80;
+  @apply py-2 px-4 italic bg-stone-200 dark:bg-slate-800;
   line-height: 1.2;
 }
 
@@ -111,5 +111,5 @@ sup a {
 section.footnotes::before {
   @apply text-4xl mb-[2rem];
   line-height: 1.2;
-  content: "footnotes";
+  content: "---";
 }

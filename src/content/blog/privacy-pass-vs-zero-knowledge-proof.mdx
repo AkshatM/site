@@ -1,0 +1,60 @@
+---
+title: "Look, ma, no zero knowledge proof!"
+pubDate: 08/17/2025
+description: "Blind signing with Privacy Pass can be a simpler alternative for many applications. I describe when to use it over a zero-knowledge proof."
+---
+
+Every usecase under the sun, it seems, has a [ZKP](https://www.wikiwand.com/en/articles/Zero-knowledge_proof) to solve it.
+
+Google recently [open-sourced](https://github.com/google/longfellow-zk) a ZKP library. In their announcement, they describe a sample application:
+
+> So, for example, a person visiting a website can verifiably prove he or she is over 18, without sharing anything else at all.[^1]
+
+Zero-knowledge proofs could save us from AI slop:
+
+> Moreover, the use of [ZKP] is accelerating due to the urgency with which identity credentials are needed ... to discern humans – and human-generated content – from machines and AI-generated content.[^2]
+
+and avert phishing attempts:
+
+> Imagine being able to login to websites without worrying about your password getting hacked[^3]
+
+When will it cure cancer?
+
+# Sometimes you _can_ trust things
+
+I quite like ZKPs. They have their space in an engineer's arsenal.
+
+But this breathless enthusiasm obscures a silly truth: sometimes it's overkill.
+
+Zero-knowledge is about, well, zero trust. They're for when you _need_ to show sensitive information to a party you don't trust, when that party doesn't trust you, and the palace is full of spies.
+
+However, as, it turns out, there's lots of cases where someone you both trust can just vouch for you instead:
+
+1. Government-issued digital ID cards can confirm age.
+2. Your hardware devices can attest your humanity for you.
+3. Social logins and OAuth can solve passwordless logins.
+
+All these options _attest_ to your ability to do something, or be something.
+
+# Wait, what if I **need** to be anonymous?
+
+Likely the reason ZKPs attract so much attention for these examples is the perceived _privacy_ benefit -- the idea that you don't need to be fingerprinted at all.
+
+The foregoing solutions don't guarantee that. Nearly all of them might share a unique identifier about you -- your email, your IP address, or more.
+
+This is important to avoid because fingerprinting enables tracking: somebody could follow you around from site to site, constructing a digital timeline of your activities.
+
+Fret not. If you trust an attester but anonymity matters to you, **there is a solution**.
+
+---
+
+This weekend, I crammed [three](https://www.rfc-editor.org/rfc/rfc9576.html) [IETF](https://www.rfc-editor.org/rfc/rfc9577.html) [RFCs](https://www.rfc-editor.org/rfc/rfc9578.html) in one go. Clocking in at seventy-five pages, it wasn't exactly light reading.
+
+Taken together, they describe the Privacy Pass protocol, which promises a system where:
+
+1. Your attesters can vouch for you, but not know what you're trying to do with those vouchers.
+2. Services can accept the vouchers, but not necessarily know anything else about you.
+
+[^1]: [Opening up ‘Zero-Knowledge Proof’ technology to promote privacy in age assurance](https://blog.google/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/)
+[^2]: [The State of Zero-Knowledge Proofs: From Research to Serious Business](https://www.protocol.ai/blog/zero-knowledge-proofs/)
+[^3]: [Zero-Knowledge Proofs: A Beginner's Guide](https://www.dock.io/post/zero-knowledge-proofs)
