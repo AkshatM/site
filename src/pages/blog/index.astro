@@ -22,13 +22,15 @@ const { Content } = await render(post);
 				<p>Technical essays on software systems: protocols, networks, languages and architecture</p>
 			</hgroup>
 			<figure>
-				<Image src={myImage} alt="Tibet, Himalayas, Nicholas Roerich (1933)" />
-				<figcaption><i>Tibet, Himalayas</i>. Nicholas Roerich, 1933.</figcaption>
+				<Image src={myImage} alt="Drops of Life, Nicholas Roerich (1924)" title="Nicholas Roerich, 1924" />
+				<figcaption><i>Drops of Life</i>. Nicholas Roerich, 1924.</figcaption>
 			</figure>
                 {posts.map((post) => 
                     <div>
-                    <a href={`/blog/${post.id}`}><h3 class="text-right" set:html={post.data.title} /></a>
-                    </div>
+					<p class="dark:text-white/80 text-black/60 mb-[1rem] text-left">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}</p>
+                    <p set:html={post.data.description} class="px-4"/>
+					<a href={`/blog/${post.id}`}><p class="mt-[1rem] text-right" set:html={post.data.title} /></a>
+					</div>
                 )}
 			</section>
 		</article>

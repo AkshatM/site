@@ -7,34 +7,73 @@
   src: url("/fonts/Lora/Lora-VariableFont_wght.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/Charter/charter_regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/Charter/charter_bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/Charter/charter_italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/Charter/charter_bold_italic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
 section[role="main"] {
   @apply lg:max-w-3xl px-8 md:px-0 w-full;
   max-inline-size: 60ch;
 }
 
-section[role="main"] * {
+section[role="main"] > * + * {
   @apply mb-[1.3rem];
 }
 
 section[role="main"] h1 {
-  @apply text-5xl mb-[2rem];
+  @apply text-5xl my-[1.5rem];
   line-height: 1.2;
 }
 
 section[role="main"] h2 {
-  @apply text-4xl mb-[1.75rem];
+  @apply text-4xl my-[1.5rem];
   line-height: 1.2;
 }
 
 section[role="main"] h3 {
-  @apply text-3xl mb-[1.5rem];
+  @apply text-3xl my-[1.5rem];
   line-height: 1.2;
 }
 
 section[role="main"] li,
 section[role="main"] p {
-  @apply text-xl;
-  line-height: 1.5;
+  @apply text-xl font-[Charter];
+  line-height: 1.5rem;
+}
+
+section[role="main"] li code,
+section[role="main"] p code,
+section[role="main"] details summary code {
+  @apply text-lg;
+  line-height: 0.5rem;
 }
 
 section[role="main"] li {
@@ -46,20 +85,24 @@ section[role="main"] blockquote {
 }
 
 section[role="main"] blockquote p {
-  @apply my-0 text-lg;
-}
-
-section[role="main"] .callout blockquote {
-  @apply bg-yellow-100 dark:bg-blue-300 border-2 dark:text-black;
+  @apply my-0 text-lg font-[Charter];
 }
 
 section[role="main"] figure figcaption,
 section[role="main"] figure figcaption * {
-  @apply text-center text-xs;
+  @apply text-center text-xs font-[Charter];
 }
 
 section[role="main"] p.double-size {
-  @apply text-2xl;
+  @apply text-2xl font-[Lora];
+}
+
+section[role="main"] p.double-size code {
+  @apply text-2xl font-mono;
+}
+
+section[role="main"] p.double-size a {
+  @apply text-2xl text-black dark:text-white hover:decoration-blue-600 dark:hover:decoration-blue-600 hover:text-black dark:hover:text-white;
 }
 
 section[role="main"] pre > code {
@@ -70,21 +113,30 @@ section[role="main"] ol {
   @apply list-decimal;
 }
 
+section[role="main"] .katex-display {
+  @apply w-[330px] overflow-scroll sm:w-auto sm:overflow-visible;
+}
+
 section[role="main"] .katex-display * {
   @apply mb-0;
 }
 
-section[role="main"] .katex * {
-  @apply mb-0;
+section[role="main"] .katex {
+  @apply mb-0 text-xl;
+  line-height: 0.5rem;
 }
 
 section[role="main"] hgroup h1 {
-  @apply text-5xl;
-  line-height: 1.5;
+  @apply text-5xl mt-0;
+  line-height: 1.2;
+}
+
+section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figcaption.header span.title{
+  font-family: initial;
 }
 
 section[role="main"] hgroup p {
-  @apply py-2 px-4 italic bg-stone-200 dark:bg-slate-800;
+  @apply pb-3 px-4 mb-[1.3rem] shadow-lg dark:shadow-rose-500 dark:shadow-sm;
   line-height: 1.5;
 }
 
@@ -98,19 +150,33 @@ section[role="main"] hgroup p {
 }
 
 section[role="main"] hr {
-  @apply mb-[1.5rem];
+  @apply mb-[1.5rem] border-t border-black/10 dark:border-white/10;
 }
 
 a {
-  @apply underline hover:decoration-blue-600 decoration-2 underline-offset-6 focus:text-fuchsia-400;
+  @apply underline hover:decoration-blue-600 underline-offset-2 decoration-2 focus:text-fuchsia-400;
 }
 
 sup a {
   @apply hover:decoration-blue-600 text-red-400 no-underline;
 }
 
-section.footnotes::before {
-  @apply text-4xl mb-[2rem];
-  line-height: 1.2;
-  content: "---";
+section[role="main"] details > p a, section[role="main"] p a, section[role="main"] p sup a, section[role="main"] li a, section[role="main"] li sup a {
+  @apply dark:text-rose-400 hover:text-red-600 dark:hover:text-blue-500 focus:text-fuchsia-400;
+}
+
+section.footnotes {
+  @apply border-t border-black/10 dark:border-white/10 ;
+}
+
+section.footnotes > ol > li {
+  @apply my-[1rem];
+}
+
+section[role="main"] details > p {
+  @apply p-2;
+}
+
+section[role="main"] details summary {
+  @apply cursor-pointer font-semibold text-xl p-2 dark:text-blue-500;
 }
