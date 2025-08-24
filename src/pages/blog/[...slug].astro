@@ -35,7 +35,7 @@ const { Content } = await render(post);
 				</hgroup>
 				<Content />
 				<hr>
-				<div class="text-xs">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href="mailto:me@akshatmahajan.com">Email</a> me.</div>
+				<div class="text-xs">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href={"mailto:me@akshatmahajan.com?subject=" + encodeURIComponent("Re: " + post.data.title)}>Email</a> me.</div>
 				<div>© 2025, Akshat Mahajan. All rights reserved.</div>
 			</section>
 		</article>

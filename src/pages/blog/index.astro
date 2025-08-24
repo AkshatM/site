@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { Image } from 'astro:assets';
-import myImage from '../../assets/blog-cover.jpg';
+import Cover from '../../assets/blog-cover.jpg';
 
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
@@ -18,11 +18,11 @@ const { Content } = await render(post);
 		<article>
 			<section role="main" aria-labelledby="about-heading" class="w-full">
 			<hgroup>
-				<h1>Typing at the Terminal</h1>
+				<h1>Terminal Meditations</h1>
 				<p>Technical essays on software systems: protocols, networks, languages and architecture</p>
 			</hgroup>
 			<figure>
-				<Image src={myImage} alt="Drops of Life, Nicholas Roerich (1924)" title="Nicholas Roerich, 1924" />
+				<Image src={Cover} alt="Drops of Life, Nicholas Roerich (1924)" title="Nicholas Roerich, 1924" />
 				<figcaption><i>Drops of Life</i>. Nicholas Roerich, 1924.</figcaption>
 			</figure>
                 {posts.map((post) => 
