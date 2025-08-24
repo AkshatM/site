@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PostTitleCard from '../../components/PostTitleCard.astro';
+import { Image } from 'astro:assets';
+import myImage from '../../assets/blog-cover.jpg';
 
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
@@ -16,12 +17,20 @@ const { Content } = await render(post);
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading" class="w-full">
-                <h1>Writings of a Luddite</h1>
-                <blockquote><p>Software should be simple. I expound on the how and why.</p></blockquote>
+			<hgroup>
+				<h1>Typing at the Terminal</h1>
+				<p>Technical essays on software systems: protocols, networks, languages and architecture</p>
+			</hgroup>
+			<figure>
+				<Image src={myImage} alt="Drops of Life, Nicholas Roerich (1924)" title="Nicholas Roerich, 1924" />
+				<figcaption><i>Drops of Life</i>. Nicholas Roerich, 1924.</figcaption>
+			</figure>
                 {posts.map((post) => 
                     <div>
-                        <a href={`/blog/${post.id}`}><h3 set:html={post.data.title} /></a>
-                    </div>
+					<p class="dark:text-white/80 text-black/60 mb-[1rem] text-left">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}</p>
+                    <p set:html={post.data.description} class="px-4"/>
+					<a href={`/blog/${post.id}`}><p class="mt-[1rem] text-right" set:html={post.data.title} /></a>
+					</div>
                 )}
 			</section>
 		</article>
