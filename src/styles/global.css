@@ -102,7 +102,7 @@ section[role="main"] p.double-size code {
 }
 
 section[role="main"] p.double-size a {
-  @apply text-2xl text-black dark:text-white hover:decoration-blue-600 dark:hover:decoration-blue-600 hover:text-black dark:hover:text-white;
+  @apply text-2xl text-black dark:text-white dark:decoration-rose-500 hover:decoration-blue-600 dark:hover:decoration-blue-600 hover:text-black dark:hover:text-white;
 }
 
 section[role="main"] pre > code {
@@ -136,7 +136,7 @@ section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figc
 }
 
 section[role="main"] hgroup p {
-  @apply pb-3 px-4 mb-[1.3rem] shadow-lg dark:shadow-rose-500 dark:shadow-sm;
+  @apply pb-3 px-4 mb-[1.3rem] shadow-md shadow-black dark:border-l-4 dark:border-rose-500;
   line-height: 1.5;
 }
 
@@ -162,7 +162,7 @@ sup a {
 }
 
 section[role="main"] details > p a, section[role="main"] p a, section[role="main"] p sup a, section[role="main"] li a, section[role="main"] li sup a {
-  @apply dark:text-rose-400 hover:text-red-600 dark:hover:text-blue-500 focus:text-fuchsia-400;
+  @apply dark:text-rose-400 dark:decoration-rose-400 hover:text-red-600 dark:hover:text-red-600 focus:text-fuchsia-400 decoration-black;
 }
 
 section.footnotes {
@@ -178,5 +178,9 @@ section[role="main"] details > p {
 }
 
 section[role="main"] details summary {
-  @apply cursor-pointer font-semibold text-xl p-2 dark:text-blue-500;
+  @apply cursor-pointer font-semibold text-xl p-2;
+}
+
+a {
+  @apply dark:decoration-white/80;
 }
