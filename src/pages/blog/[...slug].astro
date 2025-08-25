@@ -25,7 +25,7 @@ const nextPost = currentPostIndex === 0 ? undefined : posts[currentPostIndex - 1
 const { Content } = await render(post);
 ---
 
-<Base>
+<Base description={post.data.description} title={post.data.title}>
 	<main role="main" aria-label="blog content">
 		<article>
 			<section role="main" aria-labelledby="about-heading">

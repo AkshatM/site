@@ -2,12 +2,19 @@
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import Headshot from '../assets/professional-photo.jpg';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image={Headshot} />
+		<BaseHead title={title} description={description} image={Headshot} />
 		<style>
 			.sr-only {
 				position: absolute;
