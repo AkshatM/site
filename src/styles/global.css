@@ -94,7 +94,7 @@ section[role="main"] figure img {
 
 section[role="main"] figure figcaption,
 section[role="main"] figure figcaption * {
-  @apply text-center text-xs font-[Charter];
+  @apply text-center text-base font-[Charter];
 }
 
 section[role="main"] p.double-size {
@@ -179,4 +179,8 @@ a {
 
 sup a {
   @apply text-rose-400 no-underline
+}
+
+section[role="main"]> div:last-child {
+  margin-bottom: 1rem;
 }
