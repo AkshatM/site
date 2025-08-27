@@ -181,6 +181,6 @@ sup a {
   @apply text-rose-400 no-underline
 }
 
-section[role="main"]> div:last-child {
+section[role="main"] > div:last-child {
   margin-bottom: 1rem;
 }
