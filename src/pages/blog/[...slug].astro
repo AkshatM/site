@@ -41,7 +41,7 @@ const { Content } = await render(post);
 		</article>
 	</main>
 	<footer>
-		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:pl-8">
+		<div class="flex md:flex-col justify-center text-left gap-[1rem] md:pl-8 md:pt-4">
 			<a href="/subscribe" class="text-xl">subscribe?</a>
 			{previousPost && <a href={`/blog/${previousPost.id}`} class="text-xl">prev</a>}
 			{nextPost && <a href={`/blog/${nextPost.id}`} class="text-xl">next</a>}
