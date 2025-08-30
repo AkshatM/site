@@ -66,7 +66,6 @@ section[role="main"] h3 {
 section[role="main"] li,
 section[role="main"] p {
   @apply text-xl font-[Charter];
-  line-height: 1.5;
 }
 
 section[role="main"] li code,
@@ -77,7 +76,7 @@ section[role="main"] details summary code {
 }
 
 section[role="main"] li {
-  @apply mb-1;
+  @apply mb-[1rem];
 }
 
 section[role="main"] blockquote {

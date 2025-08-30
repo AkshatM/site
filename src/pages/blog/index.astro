@@ -29,7 +29,7 @@ const { Content } = await render(post);
                     <div>
 					<p class="dark:text-white/80 text-black/60 mb-[1rem] text-left">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}</p>
                     <p set:html={post.data.description} class="px-4"/>
-					<a href={`/blog/${post.id}`}><p class="mt-[1rem] text-right" set:html={post.data.title} /></a>
+					<a href={`/blog/${post.id}`}><p class="double-size mt-[1rem] text-right" set:html={post.data.title} /></a>
 					</div>
                 )}
 			</section>
@@ -37,8 +37,8 @@ const { Content } = await render(post);
 	</main>
 	<footer>
 		<div class="flex flex-row justify-center text-left gap-[1rem]">
-			<a href="/subscribe" class="text-xl md:text-3xl">subscribe?</a>
-			<a href="/rss.xml" class="text-xl md:text-3xl">rss</a>
+			<a href="/subscribe" class="text-xl">subscribe?</a>
+			<a href="/rss.xml" class="text-xl">rss</a>
 		</div>
 	</footer>
 </Base>
