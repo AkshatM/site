@@ -49,29 +49,33 @@ section[role="main"] > * + * {
 }
 
 section[role="main"] h1 {
-  @apply text-5xl my-[1.5rem];
+  @apply my-[1.5rem];
+  font-size: calc(3rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] h2 {
-  @apply text-4xl my-[1.5rem];
+  @apply my-[1.5rem];
+  font-size: calc(2rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] h3 {
-  @apply text-3xl my-[1.5rem];
+  @apply my-[1.5rem];
+  font-size: calc(2.5rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] li,
 section[role="main"] p {
-  @apply text-xl font-[Charter];
+  @apply font-[Charter];
+  font-size: calc(1rem + .5vw);
 }
 
 section[role="main"] li code,
 section[role="main"] p code,
 section[role="main"] details summary code {
-  @apply text-lg;
+  font-size: calc(1rem + .3vw);
   line-height: 0.5;
 }
 
@@ -84,7 +88,8 @@ section[role="main"] blockquote {
 }
 
 section[role="main"] blockquote p {
-  @apply my-0 text-lg font-[Charter];
+  @apply my-0 font-[Charter];
+  font-size: calc(1rem + .3vw);
 }
 
 section[role="main"] figure img {
@@ -121,12 +126,14 @@ section[role="main"] .katex-display * {
 }
 
 section[role="main"] .katex {
-  @apply mb-0 text-xl;
+  @apply mb-0;
+  font-size: calc(1rem + .5vw);
   line-height: 0.5rem;
 }
 
 section[role="main"] hgroup h1 {
-  @apply text-5xl mt-0;
+  @apply mt-0;
+  font-size: calc(3rem + .5vw);
   line-height: 1.2;
 }
 

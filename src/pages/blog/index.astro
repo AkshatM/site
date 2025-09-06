@@ -21,10 +21,6 @@ const { Content } = await render(post);
 				<h1>Terminal Meditations</h1>
 				<p>Technical essays on software systems: protocols, networks, languages and architecture</p>
 			</hgroup>
-			<figure class="mt-[2rem]">
-				<Image src={Cover} alt="Mountain Abode, Nicholas Roerich (1933)" title="Nicholas Roerich, 1933. Mountain Abode" class="px-4" />
-				<figcaption><i>Mountain Abode</i>. Nicholas Roerich, 1933.</figcaption>
-			</figure>
                 {posts.map((post) => 
                     <div>
 					<p class="dark:text-white/80 text-black/60 mb-[1rem] text-left">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}</p>
