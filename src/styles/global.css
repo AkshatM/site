@@ -136,13 +136,18 @@ section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figc
   font-family: initial;
 }
 
+section[role="main"] div.expressive-code {
+  @apply mt-[1.3rem]
+}
+
+
 section[role="main"] hgroup p {
-  @apply pb-3 px-4 mb-[1.3rem] border-l-4 dark:border-red-500 border-blue-500;
+  @apply pb-3 px-4 mb-[1.3rem] border-l-4 dark:border-red-500 border-blue-500 italic;
   line-height: 1.5;
 }
 
 section[role="main"] hgroup h1 {
-  @apply mt-0;
+  @apply mt-0 mb-[1rem];
 }
 
 @layer base {
