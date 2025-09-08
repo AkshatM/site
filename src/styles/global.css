@@ -44,18 +44,18 @@ section[role="main"] {
   max-inline-size: 60ch;
 }
 
-section[role="main"] > * + * {
-  @apply mb-[1.3rem];
+section[role="main"] > * + *, section[role="main"] hgroup > * + * {
+  margin-block: clamp(1rem, 1rem + 0.1vw, 1.5rem)
 }
 
 section[role="main"] h1 {
-  @apply my-[1.5rem];
-  font-size: calc(3rem + .5vw);
+  @apply my-[2rem];
+  font-size: calc(2.75rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] h2 {
-  @apply my-[1.5rem];
+  @apply my-[1.8rem];
   font-size: calc(2rem + .5vw);
   line-height: 1.2;
 }
@@ -67,20 +67,21 @@ section[role="main"] h3 {
 }
 
 section[role="main"] li,
-section[role="main"] p {
+section[role="main"] p,
+section[role="main"] details summary {
   @apply font-[Charter];
-  font-size: calc(1rem + .5vw);
+  font-size: clamp(1.3rem, 1rem + .4vw, 3rem);
 }
 
 section[role="main"] li code,
 section[role="main"] p code,
 section[role="main"] details summary code {
-  font-size: calc(1rem + .3vw);
+  font-size: clamp(1.2rem, 1rem + .3vw, 3rem);
   line-height: 0.5;
 }
 
 section[role="main"] li {
-  @apply mb-[1rem];
+  @apply mb-[.5rem];
 }
 
 section[role="main"] blockquote {
@@ -131,12 +132,6 @@ section[role="main"] .katex {
   line-height: 0.5rem;
 }
 
-section[role="main"] hgroup h1 {
-  @apply mt-0;
-  font-size: calc(3rem + .5vw);
-  line-height: 1.2;
-}
-
 section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figcaption.header span.title{
   font-family: initial;
 }
@@ -144,6 +139,10 @@ section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figc
 section[role="main"] hgroup p {
   @apply pb-3 px-4 mb-[1.3rem] border-l-4 dark:border-red-500 border-blue-500;
   line-height: 1.5;
+}
+
+section[role="main"] hgroup h1 {
+  @apply mt-0;
 }
 
 @layer base {
@@ -172,7 +171,7 @@ section[role="main"] details > p {
 }
 
 section[role="main"] details summary {
-  @apply cursor-pointer font-semibold text-xl p-2;
+  @apply cursor-pointer font-semibold p-2;
 }
 
 a {
