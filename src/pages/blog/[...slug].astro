@@ -32,10 +32,14 @@ const { Content } = await render(post);
 				<hgroup>
 					<h1 set:html={post.data.title} />
 					<p set:html={post.data.description} />
+					<div class="dark:text-white/80 text-black/60 text-right text-xl">
+						{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}
+					</div>
 				</hgroup>
+				<hr>
 				<Content />
 				<hr>
-				<div class="text-md">{post.data.pubDate.toLocaleDateString("en", {year: "numeric",month: "long", day: "numeric"})}. Got comments? <a href={"mailto:me@akshatmahajan.com?subject=" + encodeURIComponent("Re: " + post.data.title)}>Email</a> me.</div>
+				<div class="text-md">Got comments? <a href={"mailto:me@akshatmahajan.com?subject=" + encodeURIComponent("Re: " + post.data.title)}>Email</a> me.</div>
 				<div class="text-md">© 2025, Akshat Mahajan. All rights reserved.</div>
 			</section>
 		</article>

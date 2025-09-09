@@ -45,23 +45,23 @@ section[role="main"] {
 }
 
 section[role="main"] > * + *, section[role="main"] hgroup > * + * {
-  margin-block: clamp(1rem, 1rem + 0.1vw, 1.5rem)
+  margin-block: 1rem;
 }
 
 section[role="main"] h1 {
-  @apply my-[2rem];
+  @apply mt-[2rem];
   font-size: calc(2.75rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] h2 {
-  @apply my-[1.8rem];
+  @apply mt-[1.8rem];
   font-size: calc(2rem + .5vw);
   line-height: 1.2;
 }
 
 section[role="main"] h3 {
-  @apply my-[1.5rem];
+  @apply mt-[1.5rem];
   font-size: calc(2.5rem + .5vw);
   line-height: 1.2;
 }
@@ -112,6 +112,7 @@ section[role="main"] p.double-size code {
 
 section[role="main"] pre > code {
   @apply w-[330px];
+  font-size: calc(1rem + .3vw);
 }
 
 section[role="main"] ol {
@@ -137,13 +138,12 @@ section[role="main"] div.expressive-code figure.frame.is-terminal.has-title figc
 }
 
 section[role="main"] div.expressive-code {
-  @apply mt-[1.3rem]
+  @apply my-[1.5rem]
 }
 
 
 section[role="main"] hgroup p {
-  @apply pb-3 px-4 mb-[1.3rem] border-l-4 dark:border-red-500 border-blue-500 italic;
-  line-height: 1.5;
+  @apply pb-3 px-4 border-l-2 dark:border-red-500 border-blue-500;
 }
 
 section[role="main"] hgroup h1 {
