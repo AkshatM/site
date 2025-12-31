@@ -17,16 +17,16 @@ const postDate = post.data.updatedDate ?? post.data.publishDate
 	<FormattedDate class='min-w-[120px] text-xl' date={postDate} />
 
 	<Tag>
-		{post.data.draft && <span class='text-red-500'>(Draft) </span>}
+		{post.data.draft && <span class='text-xl text-red-500'>(Draft) </span>}
 		<a
 			data-astro-prefetch
 			href={`/blog/${post.slug}/`}
-			class='transition-all hover:text-muted-foreground text-2xl'
+			class='transition-all hover:text-muted-foreground text-xl'
 		>
 			{post.data.title}
 		</a>
 		{
-			withDesc && (
+			withDesc && post.data.description && (
 				<p class='line-clamp-3 block text-lg italic text-muted-foreground'>
 					{post.data.description}
 				</p>

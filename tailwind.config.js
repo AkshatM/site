@@ -22,6 +22,15 @@ const config = {
 					DEFAULT: {
 					css: {
 						a: false,
+						'code': {
+							fontWeight: '600', 
+						},
+						'code::before': {
+							content: '""',
+						},
+						'code::after': {
+							content: '""',
+						},
 					},
 					},
 				},
