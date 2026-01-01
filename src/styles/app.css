@@ -70,6 +70,6 @@
 		@apply bg-background text-foreground;
 	}
 	a {
-		@apply text-red-600 decoration-2 dark:text-blue-400 dark:no-underline underline-offset-4;
+		@apply text-blue-700 dark:text-green-400 transition-all hover:text-muted-foreground dark:hover:text-muted-foreground;
 	}
 }
