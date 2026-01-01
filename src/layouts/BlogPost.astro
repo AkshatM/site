@@ -6,6 +6,7 @@ import TOC from '@/components/blog/TOC.astro'
 
 import PageLayout from './BaseLayout.astro'
 
+
 interface Props {
 	post: CollectionEntry<'post'>
 }
@@ -31,6 +32,7 @@ const { headings } = await post.render()
 					class='prose prose-lg prose-zinc mt-12 text-foreground dark:prose-invert prose-headings:font-medium prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4 prose-th:before:content-none'
 				>
 					<slot />
+					<p class="text-sm md:text-md mt-4 italic">Got comments? <a href="mailto:me@akshatmahajan.com">Email me!</a></p>
 				</div>
 			</article>
 		</div>
