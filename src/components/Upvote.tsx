@@ -1,38 +1,50 @@
 // src/components/LikeButton.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { actions } from 'astro:actions';
 
-export default function LikeButton({ postId, initialLikes, disabled = false }: { postId: string, initialLikes: number, disabled: boolean }) {
+export default function LikeButton({ postId }: { postId: string }) {
 
-  console.log(`The value of disabled is ${disabled}`)
-  const [likes, setLikes] = useState(initialLikes);
-  
-  const [liked, setLiked] = useState(() => {
-    const savedValue = typeof window !== 'undefined' ? localStorage.getItem(postId) : null;
-    if (savedValue) {
-      return JSON.parse(savedValue);
+  const [disabled, setDisabled] = useState(true);
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    const hasUpvoted = async () => {
+      const { data, error } = await actions.hasUpvoted({ post: postId })
+      if (!error) {
+        setDisabled(false)
+      }
+
+      if (data) {
+        setLiked(true)
+      }
     }
-    return false;
-  });
+
+    const fetchUpvotes = async () => {
+      const { data, error } = await actions.getUpvotes({ post: postId })
+      if (!error  && data) {
+        setLikes(data)
+      }
+    }
+
+    fetchUpvotes();
+    hasUpvoted();
+  }, [])
 
   const handleLikeClick = async () => {
     if (liked) {
       return
     }
 
-    // Call the Astro action from the client
-    const { data, error } = await actions.incrementUpvote({ post: postId });
-
-    if (!error) {
-      // Update the local state with the result from the server
-      setLikes(data);
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(postId, "true");
-      }
-      setLiked(!liked);
-    } else {
-      console.log(error)
+    const { data, error } = await actions.upvote({ post: postId });
+    if (error) {
+      console.error(error)
+      setDisabled(true)
+      return
     }
+
+    setLikes(data);
+    setLiked(true);
   };
 
   return (
