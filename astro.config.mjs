@@ -11,19 +11,15 @@ import icon from 'astro-icon'
 
 import cloudflare from '@astrojs/cloudflare';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://akshatmahajan.com',
 
-  integrations: [
-      expressiveCode(expressiveCodeOptions),
-      tailwind({
-          applyBaseStyles: false
-      }),
-      sitemap(),
-      mdx(),
-      icon()
-	],
+  integrations: [expressiveCode(expressiveCodeOptions), tailwind({
+      applyBaseStyles: false
+  }), sitemap(), mdx(), icon(), react()],
 
   markdown: {
       remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
@@ -41,9 +37,14 @@ export default defineConfig({
               className: ['']
           }
       }
-	},
+    },
 
   prefetch: true,
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+      persist: true,
+    },
+  }),
 })
