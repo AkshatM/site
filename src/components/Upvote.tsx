@@ -1,43 +1,61 @@
 // src/components/LikeButton.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { actions } from 'astro:actions';
 
-export default function LikeButton({ postId, initialLikes, disabled = false }: { postId: string, initialLikes: number, disabled: boolean }) {
+export default function LikeButton({ postId }: { postId: string }) {
 
-  const [likes, setLikes] = useState(initialLikes);  
-  const [liked, setLiked] = useState(() => {
-    const savedValue = typeof window !== 'undefined' ? localStorage.getItem(postId) : null;
-    if (savedValue) {
-      return JSON.parse(savedValue);
+  const [disabled, setDisabled] = useState(true);
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    const hasUpvoted = async () => {
+      const { data, error } = await actions.hasUpvoted({ post: postId })
+      if (!error) {
+        setDisabled(false)
+      }
+
+      if (data) {
+        setLiked(true)
+      }
     }
-    return false;
-  });
+
+    const fetchUpvotes = async () => {
+      const { data, error } = await actions.getUpvotes({ post: postId })
+      if (!error  && data) {
+        setLikes(data)
+      }
+    }
+
+    fetchUpvotes();
+    hasUpvoted();
+  }, [])
 
   const handleLikeClick = async () => {
     if (liked) {
       return
     }
 
-    // Call the Astro action from the client
-    const { data, error } = await actions.incrementUpvote({ post: postId });
-
-    if (!error) {
-      // Update the local state with the result from the server
-      setLikes(data);
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(postId, "true");
-      }
-      setLiked(!liked);
-    } else {
-      console.log(error)
+    const { data, error } = await actions.upvote({ post: postId });
+    if (error) {
+      console.error(error)
+      setDisabled(true)
+      return
     }
+
+    setLikes(data);
+    setLiked(true);
   };
+
+  const commonState = `inline-flex items-center gap-x-1 rounded-lg border border-border px-2 py-1 transition-all rounded-xl`
+  const preClicked = `${commonState} bg-primary-foreground active:scale-95 hover:bg-input`
+  const clicked = `${commonState} hover:bg-input bg-input`
 
   return (
     disabled ? 
-    <p><i>Upvoting temporarily disabled</i> 🤍</p> : 
-    <button onClick={handleLikeClick}>
-      {likes > 0 ? `${likes} ${likes === 1 ? 'person': 'people' } liked this!` : `Like this?`} {liked ? '❤️' : '🤍'}
+    <p><i>Upvoting temporarily disabled</i></p> : 
+    <button onClick={handleLikeClick} className={liked ? clicked : preClicked} disabled={liked}>
+      {liked ? '❤️' : '🤍'} {likes}
     </button>
   );
 }
