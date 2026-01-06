@@ -23,14 +23,14 @@ const config = {
 					css: {
 						a: false,
 						'code': {
-							fontWeight: '600', 
+							fontWeight: '400', 
 						},
 						'code::before': {
 							content: '""',
 						},
 						'code::after': {
 							content: '""',
-						},
+						}
 					},
 					},
 				},
@@ -75,8 +75,10 @@ const config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans],
-				satoshi: ['Satoshi', 'sans'],
+                sans: [...fontFamily.sans],
+                satoshi: ['Satoshi', 'sans'],
+				serif: [...fontFamily.serif],
+				charter: ['charter', 'serif']
 			}
 		}
 	}

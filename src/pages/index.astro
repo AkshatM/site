@@ -46,7 +46,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 			<Image
 				src={profile}
 				alt='profile photo'
-				class='h-60 w-auto rounded-full p-2 bg-black dark:bg-black'
+				class='h-60 w-auto rounded-full p-2 bg-black'
 				loading='eager'
 			/>
 
@@ -74,7 +74,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		</section>
 
 		<Section title='About'>
-			<h1 class='text-2xl font-semibold'>I build <i>fast</i>, <u>observable</u> distributed systems</h1>
+			<h1 class='text-2xl font-semibold'>I build <i>fast</i>, <mark class="bg-amber-300">observable</mark> distributed systems</h1>
 			<p class='text-lg'>At Cloudflare, I shipped <a href="https://blog.cloudflare.com/verified-bots-with-cryptography/">web bot authentication</a> and its <a href="https://github.com/cloudflare/web-bot-auth">Rust SDK</a>, built control planes and L3/L4 proxies for <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing/">Argo Smart Routing</a>, and helped power Apple Private Relay on the <a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/">Privacy Edge</a> team.</p>
 			<p class='text-lg'>At PlanGrid and Autodesk, I built infrastructure that failed clearly, deployed safely, and recovered quickly. Earlier, I worked on large-scale data and networking systems, focused on throughput and correctness.</p>
 			<p class='text-xl font-semibold'>Learn more from my <a href="/resume.pdf">resume</a>.</p>
