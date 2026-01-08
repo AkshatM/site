@@ -1,5 +1,5 @@
 ---
-title: "OTEL supports zero-code instrumentation"
+title: "OpenTelemetry supports zero-code instrumentation"
 publishDate: "31 December 2025"
 tags: ["note", "observability"]
 ---

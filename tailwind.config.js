@@ -77,8 +77,6 @@ const config = {
 			fontFamily: {
                 sans: [...fontFamily.sans],
                 satoshi: ['Satoshi', 'sans'],
-				serif: [...fontFamily.serif],
-				charter: ['charter', 'serif']
 			}
 		}
 	}
