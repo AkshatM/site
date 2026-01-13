@@ -1,5 +1,12 @@
 import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'astro/zod';
+import type { PostsDO } from '../posts-do';
+
+function getPostsStub(context: { locals: App.Locals }): DurableObjectStub<PostsDO> {
+  const ns = context.locals.runtime.env.POSTS;
+  const id = ns.idFromName('global');
+  return ns.get(id);
+}
 
 export const server = {
   upvote: defineAction({
@@ -7,27 +14,24 @@ export const server = {
       post: z.string(),
     }),
     handler: async (input, context) => {
-      let kv = context.locals.runtime.env.POSTS;
-      let response: string | null = '';
+      const stub = getPostsStub(context);
+      let nextValue: number;
       try {
-        response = await kv.get(input.post);
+        nextValue = await stub.upvote(input.post);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(`KV operation for ${input.post} failed:`, error.message);
+          console.error(`DO operation for ${input.post} failed:`, error.message);
         } else {
           console.error("An unknown error occurred");
         }
         throw new ActionError({
             code: 'INTERNAL_SERVER_ERROR',
-            message: "Error writing to KV",
+            message: "Error writing to Durable Object",
         })
       }
 
-      const current_value = response ? Number(response) : 0;
-      const next_value = current_value + 1;
-      await kv.put(input.post, next_value.toString());
       context.session?.set(input.post, "true");
-      return next_value;
+      return nextValue;
     }
   }),
   getUpvotes: defineAction({
@@ -35,23 +39,20 @@ export const server = {
       post: z.string(),
     }),
     handler: async (input, context) => {
-      let kv = context.locals.runtime.env.POSTS;
-      let response: string | null = '';
+      const stub = getPostsStub(context);
       try {
-        response = await kv.get(input.post);
+        return await stub.getUpvotes(input.post);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(`Posts KV operation for ${input.post} failed:`, error.message);
+          console.error(`Posts DO operation for ${input.post} failed:`, error.message);
         } else {
           console.error(`An unknown error occurred: ${error}`);
         }
         throw new ActionError({
             code: 'INTERNAL_SERVER_ERROR',
-            message: "Error writing to KV",
+            message: "Error reading from Durable Object",
         })
       }
-
-      return response ? Number(response) : 0;
     }
   }),
   hasUpvoted: defineAction({
