@@ -21,12 +21,22 @@
 	},
 	"kv_namespaces": [
 		{
-			"binding": "POSTS",
-			"id": "df4bbc10b3344afdabe23618f4a6ecac"
-		},
-		{
 			"binding": "SESSION",
 			"id": "33dae03caeaf42c1af2499163f0615d9"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "POSTS",
+				"class_name": "PostsDO"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": ["PostsDO"]
 		}
 	]
 }

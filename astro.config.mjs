@@ -46,5 +46,9 @@ export default defineConfig({
       enabled: true,
       persist: true,
     },
+    workerEntryPoint: {
+      path: 'src/worker.ts',
+      namedExports: ['PostsDO'],
+    },
   }),
 })
