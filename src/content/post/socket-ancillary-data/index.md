@@ -1,5 +1,6 @@
 ---
 title: "Use ancillary data to see packet wait times"
+description: "A terse guide to setting up control messages on Linux sockets" 
 publishDate: "31 December 2025"
 tags: ["note", "observability", "rust"]
 ---
