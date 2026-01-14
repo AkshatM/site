@@ -23,7 +23,7 @@ const config = {
 					css: {
 						a: false,
 						'code': {
-							fontWeight: '400', 
+							fontWeight: '600', 
 						},
 						'code::before': {
 							content: '""',

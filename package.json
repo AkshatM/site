@@ -3,7 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro check & npx wrangler@latest dev",
+		"dev": "npm run build && npx wrangler@latest dev",
 		"start": "astro dev",
 		"build": "astro check && astro build && node scripts/fix-worker-exports.js",
 		"preview": "astro preview",
