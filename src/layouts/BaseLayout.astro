@@ -22,10 +22,10 @@ const {
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
 	</head>
 
-	<body class='flex justify-center bg-background'>
+	<body class='flex justify-center bg-background antialiased'>
 		<ThemeProvider />
 		<main
-			class='flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 font-satoshi text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
+			class='flex min-h-screen w-screen max-w-[56rem] flex-col items-center px-6 pb-16 pt-8 font-satoshi text-base leading-relaxed sm:px-10 md:px-12 lg:px-16'
 		>
 			<Header />
 			<slot />

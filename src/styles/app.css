@@ -2,63 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Body font - Satoshi for clean readability */
 @font-face {
     font-family: 'Satoshi';
     src: url('/fonts/Satoshi-Variable.ttf');
 	font-style: normal;
     font-display: swap;
 }
- 
+
 @font-face {
     font-family: 'Satoshi';
     src: url('/fonts/Satoshi-VariableItalic.ttf');
     font-style: italic;
     font-display: swap;
- }
+}
+
+/* Display font - Fraunces for editorial headlines */
+@font-face {
+    font-family: 'Fraunces';
+    src: url('https://fonts.gstatic.com/s/fraunces/v31/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fraunces';
+    src: url('https://fonts.gstatic.com/s/fraunces/v31/6NVf8FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChJdt9vIVYX9G37lvd9.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
 
 @layer base {
 	:root {
-		--background: 210 33% 99%;
-		--foreground: 240 10% 3.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 240 10% 3.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 240 10% 3.9%;
-		--primary: 240 5.9% 10%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 240 4.8% 95.9%;
-		--secondary-foreground: 240 5.9% 10%;
-		--muted: 240 4.8% 95.9%;
-		--muted-foreground: 240 3.8% 46.1%;
-		--accent: 240 4.8% 95.9%;
-		--accent-foreground: 240 5.9% 10%;
-		--destructive: 0 72.22% 50.59%;
+		/* Warm cream background with ink-like foreground */
+		--background: 40 33% 97%;
+		--foreground: 20 20% 12%;
+		--card: 40 25% 99%;
+		--card-foreground: 20 20% 12%;
+		--popover: 40 25% 99%;
+		--popover-foreground: 20 20% 12%;
+		--primary: 20 20% 12%;
+		--primary-foreground: 40 33% 97%;
+		--secondary: 40 15% 93%;
+		--secondary-foreground: 20 20% 12%;
+		--muted: 40 10% 90%;
+		--muted-foreground: 20 10% 45%;
+		/* Warm terracotta accent - editorial, refined */
+		--accent: 15 65% 55%;
+		--accent-foreground: 40 33% 97%;
+		--destructive: 0 72% 51%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 240 5.9% 90%;
-		--input: 240 5.9% 90%;
-		--ring: 240 5.9% 10%;
-		--radius: 0.5rem;
+		--border: 40 15% 85%;
+		--input: 40 15% 85%;
+		--ring: 15 65% 55%;
+		--radius: 0.25rem;
 	}
 	.dark {
-		--background: 240 10% 3.9%;
-		--foreground: 0 0% 98%;
-		--card: 240 10% 3.9%;
-		--card-foreground: 0 0% 98%;
-		--popover: 240 10% 3.9%;
-		--popover-foreground: 0 0% 98%;
-		--primary: 0 0% 98%;
-		--primary-foreground: 240 5.9% 10%;
-		--secondary: 240 3.7% 15.9%;
-		--secondary-foreground: 0 0% 98%;
-		--muted: 240 3.7% 15.9%;
-		--muted-foreground: 240 5% 64.9%;
-		--accent: 240 3.7% 15.9%;
-		--accent-foreground: 0 0% 98%;
-		--destructive: 0 62.8% 30.6%;
+		/* Deep charcoal with warm undertones */
+		--background: 220 15% 8%;
+		--foreground: 40 20% 93%;
+		--card: 220 15% 10%;
+		--card-foreground: 40 20% 93%;
+		--popover: 220 15% 10%;
+		--popover-foreground: 40 20% 93%;
+		--primary: 40 20% 93%;
+		--primary-foreground: 220 15% 8%;
+		--secondary: 220 12% 15%;
+		--secondary-foreground: 40 20% 93%;
+		--muted: 220 12% 18%;
+		--muted-foreground: 40 10% 60%;
+		/* Warm amber accent for dark mode */
+		--accent: 35 90% 60%;
+		--accent-foreground: 220 15% 8%;
+		--destructive: 0 62% 40%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 240 3.7% 15.9%;
-		--input: 240 3.7% 15.9%;
-		--ring: 240 4.9% 83.9%;
+		--border: 220 12% 18%;
+		--input: 220 12% 18%;
+		--ring: 35 90% 60%;
 	}
 }
 
@@ -70,7 +92,46 @@
 		@apply bg-background text-foreground;
 	}
 	a {
-		@apply text-blue-700 dark:text-green-500 transition-all hover:text-muted-foreground dark:hover:text-muted-foreground;
+		@apply text-accent transition-colors duration-200 hover:text-accent/70;
+	}
+}
+
+/* Editorial animation utilities */
+@layer utilities {
+	.animate-fade-up {
+		animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		opacity: 0;
+	}
+
+	.animate-fade-up-delay-1 {
+		animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+		opacity: 0;
+	}
+
+	.animate-fade-up-delay-2 {
+		animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+		opacity: 0;
+	}
+
+	.animate-fade-up-delay-3 {
+		animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+		opacity: 0;
+	}
+
+	.animate-fade-up-delay-4 {
+		animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+		opacity: 0;
+	}
+
+	@keyframes fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 }
 

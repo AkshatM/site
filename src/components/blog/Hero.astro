@@ -18,56 +18,57 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 }
 ---
 
-{
-	data.coverImage && (
-		<div class='aspect-h-9 aspect-w-16 mb-6'>
-			<Image
-				alt={data.coverImage.alt}
-				class='rounded-2xl object-cover'
-				fetchpriority='high'
-				loading='eager'
-				src={data.coverImage.src}
-			/>
-		</div>
-	)
-}
-{data.draft ? <span class='text-red-500'>(Draft)</span> : null}
-<div class='flex flex-wrap items-center gap-x-3 gap-y-2'>
-	<p class='text-xs'>
-		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} /> /{' '}
-		{remarkPluginFrontmatter.minutesRead}
-	</p>
-</div>
-<h1 class='mt-2 md:text-5xl text-3xl font-medium sm:mb-1'>
-	{data.title}
-</h1>
+<div class='mb-12 animate-fade-up'>
+	{
+		data.coverImage && (
+			<div class='aspect-h-9 aspect-w-16 mb-10'>
+				<Image
+					alt={data.coverImage.alt}
+					class='object-cover'
+					fetchpriority='high'
+					loading='eager'
+					src={data.coverImage.src}
+				/>
+			</div>
+		)
+	}
 
-{
-	!!data.tags?.length && (
-		<div class='mt-3 flex flex-row items-center gap-x-1 text-md'>
-			<p>#</p>
-			{data.tags.map((tag, i) => (
-				<div>
+	<!-- Meta line -->
+	<div class='flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.1em] text-muted-foreground mb-6'>
+		{data.draft && <span class='text-destructive'>(Draft)</span>}
+		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} />
+		<span>·</span>
+		<span>{remarkPluginFrontmatter.minutesRead}</span>
+		{
+			data.updatedDate && (
+				<>
+					<span>·</span>
+					<span>Updated <FormattedDate date={data.updatedDate} dateTimeOptions={dateTimeOptions} /></span>
+				</>
+			)
+		}
+	</div>
+
+	<!-- Title -->
+	<h1 class='font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6'>
+		{data.title}
+	</h1>
+
+	<!-- Tags -->
+	{
+		!!data.tags?.length && (
+			<div class='flex flex-wrap items-center gap-2'>
+				{data.tags.map((tag) => (
 					<a
 						aria-label={`View more blogs with the tag ${tag}`}
-						class="inline-block hover:underline hover:underline-offset-4 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						class='text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border border-border hover:border-accent rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
 						data-pagefind-filter='tag'
 						href={`/tags/${tag}/`}
 					>
 						{tag}
 					</a>
-					{i < data.tags.length - 1 && ' :: '}
-				</div>
-			))}
-		</div>
-	)
-}
-
-{
-	data.updatedDate && (
-		<p class='mt-6 text-base'>
-			Last Updated:
-			<FormattedDate class='ms-1' date={data.updatedDate} dateTimeOptions={dateTimeOptions} />
-		</p>
-	)
-}
+				))}
+			</div>
+		)
+	}
+</div>

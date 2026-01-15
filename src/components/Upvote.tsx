@@ -1,8 +1,8 @@
-// src/components/LikeButton.tsx
+// src/components/Upvote.tsx
 import { useEffect, useState } from 'react';
 import { actions } from 'astro:actions';
 
-export default function LikeButton({ postId }: { postId: string }) {
+export default function Upvote({ postId }: { postId: string }) {
 
   const [disabled, setDisabled] = useState(true);
   const [likes, setLikes] = useState(0);
@@ -47,9 +47,9 @@ export default function LikeButton({ postId }: { postId: string }) {
     setLiked(true);
   };
 
-  const commonState = `inline-flex items-center gap-x-1 rounded-lg border border-border px-2 py-1 transition-all rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`
+  const commonState = `inline-flex items-center gap-x-1 rounded-lg px-2 py-1 transition-all rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`
   const preClicked = `${commonState} bg-primary-foreground active:scale-95 hover:bg-input`
-  const clicked = `${commonState} bg-amber-300 text-black`
+  const clicked = `${commonState} text-accent`
 
   return (
     disabled ?
