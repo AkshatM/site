@@ -45,7 +45,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		<section class='flex flex-col items-center gap-y-7'>
 			<Image
 				src={profile}
-				alt='profile photo'
+				alt='Akshat Mahajan'
 				class='h-60 w-auto rounded-full p-2 bg-black'
 				loading='eager'
 			/>
@@ -85,9 +85,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 				<Section title='Posts'>
 					<ul class='flex flex-col gap-y-2'>
 						{allPostsByDate.map((p) => (
-							<li class='flex flex-col gap-x-2 sm:flex-row'>
-								<PostPreview post={p} withDesc />
-							</li>
+							<PostPreview as='li' post={p} withDesc />
 						))}
 					</ul>
 				</Section>
