@@ -79,11 +79,14 @@ const paginationProps = {
 								Topics
 							</h2>
 							<ul class='flex flex-wrap gap-2'>
-								{uniqueTags.map((tag) => (
+								{uniqueTags.map((tag, i) => (
 									<li>
 										<a
 											href={`/tags/${tag}/`}
-											class='text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border border-border hover:border-accent rounded'
+											class:list={[
+												'text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border rounded',
+												i % 2 === 0 ? 'border-accent/50 hover:border-accent' : 'border-accent-secondary/50 hover:border-accent-secondary'
+											]}
 										>
 											{tag}
 										</a>

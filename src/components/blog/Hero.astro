@@ -58,10 +58,13 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	{
 		!!data.tags?.length && (
 			<div class='flex flex-wrap items-center gap-2'>
-				{data.tags.map((tag) => (
+				{data.tags.map((tag, i) => (
 					<a
 						aria-label={`View more blogs with the tag ${tag}`}
-						class='text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border border-border hover:border-accent rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+						class:list={[
+							'text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+							i % 2 === 0 ? 'border-accent/50 hover:border-accent' : 'border-accent-secondary/50 hover:border-accent-secondary'
+						]}
 						data-pagefind-filter='tag'
 						href={`/tags/${tag}/`}
 					>

@@ -2,9 +2,7 @@ import { fontFamily } from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
-	darkMode: ['class'],
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	safelist: ['dark'],
 	corePlugins: {
 		aspectRatio: false
 	},
@@ -62,7 +60,8 @@ const config = {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
-					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
+					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
+					secondary: 'hsl(var(--accent-secondary) / <alpha-value>)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
