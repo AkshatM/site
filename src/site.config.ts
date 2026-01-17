@@ -37,7 +37,7 @@ export const menuLinks: Array<{ title: string; path: string }> = [
 // https://expressive-code.com/reference/configuration/
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	// One dark, one light theme => https://expressive-code.com/guides/themes/#available-themes
-	themes: ['catppuccin-mocha', 'catppuccin-latte'],
+	themes: ['ayu-dark', 'github-light'],
 	themeCssSelector(theme, { styleVariants }) {
 		// If one dark and one light theme are available
 		// generate theme CSS selectors compatible with cactus-theme dark mode switch
@@ -49,13 +49,13 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 		// return default selector
 		return `[data-theme="${theme.name}"]`
 	},
-	useThemedScrollbars: false,
+	useThemedScrollbars: true,
 	styleOverrides: {
 		frames: {
 			frameBoxShadowCssValue: 'none'
 		},
 		uiLineHeight: 'inherit',
-		codeFontSize: '0.875rem',
+		codeFontSize: '1rem',
 		codeLineHeight: '1.7142857rem',
 		borderRadius: '4px',
 		codePaddingInline: '1rem',

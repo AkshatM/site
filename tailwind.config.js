@@ -23,7 +23,11 @@ const config = {
 					css: {
 						a: false,
 						'code': {
-							fontWeight: '600', 
+							fontWeight: '600',
+							fontSize: 'inherit',
+						},
+						'pre code': {
+							fontSize: 'inherit',
 						},
 						'code::before': {
 							content: '""',

@@ -7,7 +7,7 @@ tags: ["note", "observability", "rust"]
 
 ## Context
 
-In 2024, I was working on a Layer 3 proxy at Cloudflare. We had never stress-tested this system outside of production traffic, and we wanted a way to measure how long any packet was stuck in the kernel's wait queue. This would tell us, roughly, whether we had backpressure. 
+In 2024, I was working on a Layer 3 proxy at Cloudflare. We wanted a way to measure how long any packet was stuck in the kernel's wait queue. This would tell us, roughly, whether we had backpressure. 
 
 I originally reached for a pure kernelspace solution -- use eBPF to track packet arrivals in any of the listening sockets for our proxy. However, it turns out there's a better way to do this, all in userspace:
 

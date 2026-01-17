@@ -16,6 +16,9 @@
 
 		const root = document.documentElement
 
+		// Set data-theme attribute for Expressive Code
+		root.setAttribute('data-theme', newTheme)
+
 		// if current dark theme and new theme is dark, return
 		if (newTheme === 'dark' && root.classList.contains('dark')) {
 			return
