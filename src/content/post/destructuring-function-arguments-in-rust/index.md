@@ -1,6 +1,6 @@
 ---
-title: "In Rust, you can destructure function arguments"
-description: "A surprising feature of unusual syntax, for the uninitiated"
+title: "Unexpected pattern-matching in Rust"
+description: "Functions and closures can match arguments"
 publishDate: "17 January 2026"
 tags: ["note", "rust"]
 ---
@@ -65,7 +65,9 @@ and so on.
 
 ## Function arguments can be pattern-matched too
 
-Yes, you read that correctly. _Function arguments (and closure arguments) get this treatment too_.
+Yes, you read that correctly:
+
+> Function arguments can be pattern-matched too.
 
 Let's revisit our first example: 
 

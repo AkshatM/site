@@ -73,8 +73,9 @@
 	a {
 		@apply text-accent transition-colors duration-200 hover:text-accent/70;
 	}
-	a code {
-		@apply !text-accent !transition-colors !duration-200 hover:!text-accent/70;
+	/* Teal links in blog prose */
+	.prose a code {
+		@apply !text-accent-secondary hover:!text-accent-secondary/70;
 	}
 
 	/* Delightful text selection - teal accent */

@@ -47,7 +47,7 @@ export default function Upvote({ postId }: { postId: string }) {
     setLiked(true);
   };
 
-  const commonState = `inline-flex items-center gap-x-1 rounded-lg px-2 py-1 transition-all rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`
+  const commonState = `inline-flex items-center gap-x-1 rounded-lg px-2 transition-all rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background h-full`
   const preClicked = `${commonState} bg-primary-foreground active:scale-95 hover:bg-input`
   const clicked = `${commonState} text-accent`
 
