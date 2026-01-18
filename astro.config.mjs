@@ -5,6 +5,8 @@ import sitemap from '@astrojs/sitemap'
 import { remarkReadingTime } from './src/utils/remarkReadingTime.ts'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import rehypeExternalLinks from 'rehype-external-links'
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 import expressiveCode from 'astro-expressive-code'
 import { expressiveCodeOptions } from './src/site.config'
 import icon from 'astro-icon'
@@ -17,12 +19,19 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://akshatmahajan.com',
 
-  integrations: [expressiveCode(expressiveCodeOptions), tailwind({
+  integrations: [
+    expressiveCode(expressiveCodeOptions), 
+    tailwind({
       applyBaseStyles: false
-  }), sitemap(), mdx(), icon(), react()],
+    }), 
+    sitemap(), 
+    mdx(), 
+    icon(),
+    react()
+  ],
 
   markdown: {
-      remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
+      remarkPlugins: [remarkUnwrapImages, remarkReadingTime, remarkMath],
       rehypePlugins: [
           [
               rehypeExternalLinks,
@@ -30,7 +39,8 @@ export default defineConfig({
                   target: '_blank',
                   rel: ['nofollow, noopener, noreferrer']
               }
-          ]
+          ],
+          [rehypeKatex, {}]
       ],
       remarkRehype: {
           footnoteLabelProperties: {
