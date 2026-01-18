@@ -86,7 +86,7 @@ const config = {
 			fontFamily: {
                 sans: [...fontFamily.sans],
                 satoshi: ['Satoshi', 'sans-serif'],
-                display: ['Fraunces', 'Georgia', 'serif'],
+                display: ['serif'],
 			}
 		}
 	}

@@ -50,6 +50,9 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 		return `[data-theme="${theme.name}"]`
 	},
 	useThemedScrollbars: true,
+	frames: {
+		showCopyToClipboardButton: false,
+	},
 	styleOverrides: {
 		frames: {
 			frameBoxShadowCssValue: 'none'

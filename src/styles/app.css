@@ -20,7 +20,7 @@
 /* Display font - Fraunces for editorial headlines */
 @font-face {
     font-family: 'Fraunces';
-    src: url('https://fonts.gstatic.com/s/fraunces/v31/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c.woff2') format('woff2');
+    src: url('/fonts/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
     font-family: 'Fraunces';
-    src: url('https://fonts.gstatic.com/s/fraunces/v31/6NVf8FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChJdt9vIVYX9G37lvd9.woff2') format('woff2');
+    src: url('/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf');
     font-weight: 100 900;
     font-style: italic;
     font-display: swap;
