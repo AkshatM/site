@@ -41,7 +41,7 @@ match result {
 }
 ```
 
-You can also use `if let` and `while let`: 
+You can also use `if-let` and `while-let` expressions: 
 
 ```rust
 if let Some(x) = maybe {

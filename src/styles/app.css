@@ -17,23 +17,6 @@
     font-display: swap;
 }
 
-/* Display font - Fraunces for editorial headlines */
-@font-face {
-    font-family: 'Fraunces';
-    src: url('/fonts/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Fraunces';
-    src: url('/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf');
-    font-weight: 100 900;
-    font-style: italic;
-    font-display: swap;
-}
-
 @layer base {
 	:root {
 		/* Deep charcoal with warm undertones */
