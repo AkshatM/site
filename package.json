@@ -3,9 +3,10 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "npm run build && npx wrangler@latest dev --ip 0.0.0.0",
+		"dev": "npm run start",
 		"start": "astro dev",
 		"build": "astro check && astro build && node scripts/fix-worker-exports.js",
+		"staging": "astro check && astro build && npx wrangler@latest --ip 0.0.0.0",
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""

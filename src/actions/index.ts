@@ -14,6 +14,12 @@ export const server = {
       post: z.string(),
     }),
     handler: async (input, context) => {
+      if (!import.meta.env.PROD) {
+        throw new ActionError({
+            code: 'NOT_FOUND',
+            message: "Not availabe in dev mode",
+        })
+      }
       const stub = getPostsStub(context);
       let nextValue: number;
       try {
@@ -39,6 +45,12 @@ export const server = {
       post: z.string(),
     }),
     handler: async (input, context) => {
+      if (!import.meta.env.PROD) {
+        throw new ActionError({
+            code: 'NOT_FOUND',
+            message: "Not availabe in dev mode",
+        })
+      }
       const stub = getPostsStub(context);
       try {
         return await stub.getUpvotes(input.post);
