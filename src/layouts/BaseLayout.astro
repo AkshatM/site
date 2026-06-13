@@ -2,9 +2,6 @@
 import type { SiteMeta } from '@/types'
 
 import BaseHead from '@/components/BaseHead.astro'
-import Footer from '@/components/layout/Footer.astro'
-import Header from '@/components/layout/Header.astro'
-import ThemeProvider from '@/components/ThemeProvider.astro'
 
 import { siteConfig } from '@/site-config'
 
@@ -17,38 +14,65 @@ const {
 } = Astro.props
 ---
 
-<html lang={siteConfig.lang}>
+<html lang={siteConfig.lang} data-theme='light'>
 	<head>
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
-		{Astro.url.pathname.startsWith("/blog/") && <link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-			integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
-			crossorigin="anonymous"
+		<!-- Apply saved or preferred theme before paint to avoid flash -->
+		<script is:inline>
+			;(function () {
+				var saved = localStorage.getItem('theme')
+				var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+				var theme = saved || (prefersDark ? 'dark' : 'light')
+				document.documentElement.setAttribute('data-theme', theme)
+			})()
+		</script>
+		{Astro.url.pathname.startsWith('/blog/') && <link
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css'
+			integrity='sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV'
+			crossorigin='anonymous'
 		/>}
-		{Astro.url.pathname.startsWith("/blog/") && <script is:inline
+		{Astro.url.pathname.startsWith('/blog/') && <script is:inline
 			defer
-			src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-			integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
-			crossorigin="anonymous"
+			src='https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js'
+			integrity='sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8'
+			crossorigin='anonymous'
 		></script>}
-		{Astro.url.pathname.startsWith("/blog/") && <script is:inline
+		{Astro.url.pathname.startsWith('/blog/') && <script is:inline
 			defer
-			src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-			integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-			crossorigin="anonymous"
-			onload="renderMathInElement(document.body);"
+			src='https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js'
+			integrity='sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05'
+			crossorigin='anonymous'
+			onload='renderMathInElement(document.body);'
 		></script>}
 	</head>
 
-	<body class='flex justify-center bg-background antialiased'>
-		<ThemeProvider />
-		<main
-			class='flex min-h-screen w-screen max-w-[56rem] flex-col items-center px-6 pb-16 pt-8 font-satoshi text-base leading-tight sm:px-10 md:px-12 lg:px-16'
-		>
-			<Header />
+	<body>
+		<a href='#main-content' class='skip-link'>Skip to main content</a>
+		<button id='theme-toggle' aria-label='Toggle dark mode'>[dark]</button>
+		<main id='main-content'>
 			<slot />
-			<Footer />
 		</main>
+
+		<script>
+			const toggle = document.getElementById('theme-toggle') as HTMLButtonElement
+
+			function getTheme() {
+				return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+			}
+
+			function updateLabel() {
+				toggle.textContent = getTheme() === 'dark' ? '[light]' : '[dark]'
+			}
+
+			updateLabel()
+
+			toggle.addEventListener('click', () => {
+				const next = getTheme() === 'dark' ? 'light' : 'dark'
+				document.documentElement.setAttribute('data-theme', next)
+				localStorage.setItem('theme', next)
+				updateLabel()
+			})
+		</script>
 	</body>
 </html>

@@ -5,24 +5,14 @@ interface Props {
 	heading: TocItem
 }
 
-const {
-	heading: { depth, slug, subheadings, text }
-} = Astro.props
+const { heading: { depth, slug, subheadings, text } } = Astro.props
 ---
 
-<li class={`${depth > 2 ? 'ms-2' : ''}`}>
-	<a
-		aria-label={`Scroll to section: ${text}`}
-		class={`block line-clamp-2 rounded ${depth <= 2 ? 'mt-2' : 'mt-1 text-sm'} text-foreground/75 transition-all hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
-		href={`#${slug}`}>{text}</a
-	>
-	{
-		!!subheadings.length && (
-			<ul>
-				{subheadings.map((subheading) => (
-					<Astro.self heading={subheading} />
-				))}
-			</ul>
-		)
-	}
+<li data-depth={depth}>
+	<a aria-label={`Scroll to section: ${text}`} href={`#${slug}`}>{text}</a>
+	{!!subheadings.length && (
+		<ul>
+			{subheadings.map((subheading) => <Astro.self heading={subheading} />)}
+		</ul>
+	)}
 </li>

@@ -13,25 +13,9 @@ const { as: Tag = 'div', post, withDesc = false } = Astro.props
 const postDate = post.data.updatedDate ?? post.data.publishDate
 ---
 
-<Tag class='group py-6 first:pt-0 last:pb-0'>
-	<div class='flex flex-col gap-2'>
-		<div class='flex items-center gap-3'>
-			<FormattedDate class='text-xs uppercase tracking-[0.1em] text-muted-foreground' date={postDate} />
-			{post.data.draft && <span class='text-xs uppercase tracking-[0.1em] text-destructive'>(Draft)</span>}
-		</div>
-		<a
-			data-astro-prefetch
-			href={`/blog/${post.slug}/`}
-			class='font-display text-xl md:text-2xl font-medium tracking-tight text-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded'
-		>
-			{post.data.title}
-		</a>
-		{
-			withDesc && post.data.description && (
-				<p class='text-base text-muted-foreground leading-tight mt-1 line-clamp-2'>
-					{post.data.description}
-				</p>
-			)
-		}
-	</div>
+<Tag>
+	<FormattedDate date={postDate} />
+	{post.data.draft && <span>(Draft)</span>}
+	<a data-astro-prefetch href={`/blog/${post.slug}/`}>{post.data.title}</a>
+	{withDesc && post.data.description && <p>{post.data.description}</p>}
 </Tag>
