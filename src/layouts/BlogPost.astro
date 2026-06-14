@@ -2,10 +2,8 @@
 import type { CollectionEntry } from 'astro:content'
 
 import BlogHero from '@/components/blog/Hero.astro'
-import TOC from '@/components/blog/TOC.astro'
 import Upvote from '@/components/Upvote.tsx'
 import PageLayout from './BaseLayout.astro'
-
 
 interface Props {
 	post: CollectionEntry<'post'>
@@ -19,69 +17,33 @@ const {
 
 const socialImage = ogImage ?? `/og-image/${slug}.png`
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString()
-const { headings } = await post.render()
 ---
 
 <PageLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
-	<div class='w-full'>
-		<div class='mt-8 gap-x-12 lg:flex lg:items-start'>
-			{!!headings.length && <TOC headings={headings} />}
-			<article class='flex-grow break-words' data-pagefind-body>
-				<div id='blog-hero'><BlogHero content={post} /></div>
-				<div
-					class='prose md:prose-xl prose-lg mt-8 text-foreground prose-invert prose-headings:font-display prose-headings:font-medium prose-headings:tracking-relaxed prose-headings:text-foreground prose-p:leading-snug leading-snug prose-li:leading-snug prose-a:text-accent-secondary prose-a:no-underline hover:prose-a:underline hover:prose-a:text-accent-secondary/70 prose-a:transition-colors prose-a:duration-200 prose-blockquote:border-l-accent-secondary prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-strong:text-foreground prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none'
-				>
-					<slot />
+	<a href='/' id='post-back' aria-label='Back to home'>← Akshat Mahajan</a>
 
-					<!-- Article footer -->
-					<div class="not-prose mt-16 pt-8 border-t border-border">
-						<div class="flex flex-row justify-between gap-6">
-							<Upvote client:load postId={post.id} />
-							<p class="text-md text-muted-foreground leading-tight tracking-tight">
-								Found this helpful? Share on <a href="https://news.ycombinator.com/submitlink" class="text-accent hover:underline">Hacker News</a>, subscribe to my <a href="/rss.xml" class="text-accent hover:underline">RSS feed</a>, or <a href="mailto:me@akshatmahajan.com" class="text-accent hover:underline">email me</a>.
-							</p>
-						</div>
-					</div>
-				</div>
-			</article>
+	<article id='post' data-pagefind-body aria-label={title}>
+		<div id='blog-hero'><BlogHero content={post} /></div>
+		<slot />
+		<div id='post-footer'>
+			<Upvote client:load postId={post.id} /> · Subscribe to my <a href='/rss.xml'>RSS feed</a>.
 		</div>
-		<button
-			aria-label='Back to Top'
-			type='button'
-			class='z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center bg-foreground text-background opacity-0 transition-all duration-300 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12'
-			data-show='false'
-			id='to-top-btn'
-			><svg
-				aria-hidden='true'
-				class='h-4 w-4'
-				fill='none'
-				focusable='false'
-				stroke='currentColor'
-				stroke-width='2'
-				viewBox='0 0 24 24'
-				xmlns='http://www.w3.org/2000/svg'
-			>
-				<path d='M4.5 15.75l7.5-7.5 7.5 7.5' stroke-linecap='round' stroke-linejoin='round'></path>
-			</svg>
-		</button>
-	</div>
+	</article>
 </PageLayout>
 
 <script>
-	const scrollBtn = document.getElementById('to-top-btn') as HTMLButtonElement
-	const targetHeader = document.getElementById('blog-hero') as HTMLDivElement
+	const scrollBtn = document.getElementById('to-top-btn') as HTMLButtonElement | null
+	const targetHeader = document.getElementById('blog-hero') as HTMLDivElement | null
 
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			// only show the scroll to top button when the heading is out of view
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString()
+	if (scrollBtn && targetHeader) {
+		scrollBtn.addEventListener('click', () => {
+			document.documentElement.scrollTo({ behavior: 'smooth', top: 0 })
 		})
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				scrollBtn.dataset.show = (!entry.isIntersecting).toString()
+			})
+		})
+		observer.observe(targetHeader)
 	}
-
-	scrollBtn.addEventListener('click', () => {
-		document.documentElement.scrollTo({ behavior: 'smooth', top: 0 })
-	})
-
-	const observer = new IntersectionObserver(callback)
-	observer.observe(targetHeader)
 </script>

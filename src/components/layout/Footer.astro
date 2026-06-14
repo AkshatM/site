@@ -2,37 +2,35 @@
 const year = new Date().getFullYear()
 ---
 
-<footer class='mx-auto mt-32 w-full'>
-	<div class='border-t border-border pt-8 pb-4'>
-		<div class='flex flex-col gap-8 md:flex-row md:items-start md:justify-between'>
-			<!-- Left: Links -->
-			<div class='flex items-center gap-6'>
+<footer class='mx-auto mt-20 w-full'>
+	<div class='border-t border-foreground/12 pt-7 pb-4'>
+		<div class='flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between'>
+			<div class='flex items-center gap-8'>
 				<a
-					class='text-sm uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded'
+					class='font-body text-sm text-muted-foreground hover:text-foreground transition-colors no-underline hover:no-underline'
 					href='https://www.linkedin.com/in/mahajanakshat'
-					aria-label='LinkedIn profile'
+					rel='noopener noreferrer'
 				>
 					LinkedIn
 				</a>
 				<a
-					class='text-sm uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded'
+					class='font-body text-sm text-muted-foreground hover:text-foreground transition-colors no-underline hover:no-underline'
 					href='https://github.com/AkshatM'
+					rel='noopener noreferrer'
 				>
 					GitHub
 				</a>
 				<a
-					class='text-sm uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded'
+					class='font-body text-sm text-muted-foreground hover:text-foreground transition-colors no-underline hover:no-underline'
 					href='mailto:me@akshatmahajan.com'
 				>
 					Contact
 				</a>
 			</div>
-
-			<!-- Right: Copyright -->
-			<div class='text-sm text-muted-foreground leading-tight md:text-right'>
-				<p>{year} © Akshat Mahajan. <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class='hover:text-foreground'>CC BY-NC-ND 4.0</a>
-				</p>
-			</div>
+			<p class='font-body text-sm text-muted-foreground'>
+				{year} © Akshat Mahajan ·
+				<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/' class='hover:text-foreground transition-colors no-underline hover:no-underline'>CC BY-NC-ND 4.0</a>
+			</p>
 		</div>
 	</div>
 </footer>

@@ -1,72 +1,52 @@
-// src/components/Upvote.tsx
 import { useEffect, useState } from 'react';
 import { actions } from 'astro:actions';
 
 export default function Upvote({ postId }: { postId: string }) {
-
   const [disabled, setDisabled] = useState(true);
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    const hasUpvoted = async () => {
-      const { data, error } = await actions.hasUpvoted({ post: postId })
-      if (!error) {
-        setDisabled(false)
-      }
-
-      if (data) {
-        setLiked(true)
-      }
-    }
-
     const fetchUpvotes = async () => {
-      const { data, error } = await actions.getUpvotes({ post: postId })
-      if (!error  && data) {
-        setLikes(data)
-      }
-    }
-
+      const { data, error } = await actions.getUpvotes({ post: postId });
+      if (!error && data) setLikes(data);
+    };
+    const hasUpvoted = async () => {
+      const { data, error } = await actions.hasUpvoted({ post: postId });
+      if (!error) setDisabled(false);
+      if (data) setLiked(true);
+    };
     fetchUpvotes();
     hasUpvoted();
-  }, [postId])
+  }, [postId]);
 
-  const handleLikeClick = async () => {
-    if (liked) {
-      return
-    }
-
+  const handleClick = async () => {
+    if (liked) return;
     const { data, error } = await actions.upvote({ post: postId });
-    if (error) {
-      console.error(error)
-      setDisabled(true)
-      return
+    if (!error) {
+      setLikes(data);
+      setLiked(true);
+    } else {
+      setFailed(true);
+      setTimeout(() => setFailed(false), 2000);
     }
-
-    setLikes(data);
-    setLiked(true);
   };
 
-  const commonState = `inline-flex items-center gap-x-1 rounded-lg px-2 transition-all rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background h-full`
-  const preClicked = `${commonState} bg-primary-foreground active:scale-95 hover:bg-input`
-  const clicked = `${commonState} text-accent`
+  if (disabled) return null;
 
   return (
-    disabled ?
-    <p><i>Upvoting temporarily disabled</i></p> :
-    <button
-      onClick={handleLikeClick}
-      className={liked ? clicked : preClicked}
-      disabled={liked}
-      title="Toast this post"
-      aria-pressed={liked}
-      aria-label={`Upvote this post. ${likes} upvotes`}
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polyline points="17 11 12 6 7 11"></polyline>
-            <polyline points="17 18 12 13 7 18"></polyline>
-        </svg>
-        <small aria-hidden="true">{likes}</small>
-    </button>
+    <span className='upvote'>
+      <button
+        onClick={handleClick}
+        disabled={liked}
+        className={liked ? 'upvote-btn upvote-btn--voted' : 'upvote-btn'}
+        aria-pressed={liked}
+        aria-label={`Upvote this post. ${likes} upvotes.`}
+      >
+        {liked ? '[^ upvoted]' : failed ? '[^ failed]' : '[^ upvote]'}
+      </button>
+      {' '}{likes}
+    </span>
   );
 }

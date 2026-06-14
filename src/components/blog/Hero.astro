@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { Image } from 'astro:assets'
 import FormattedDate from '../FormattedDate.astro'
 
 interface Props {
@@ -13,65 +12,17 @@ const {
 
 const { remarkPluginFrontmatter } = await render()
 
-const dateTimeOptions: Intl.DateTimeFormatOptions = {
-	month: 'long'
-}
+const dateTimeOptions: Intl.DateTimeFormatOptions = { month: 'long' }
 ---
 
-<div class='mb-12 animate-fade-up'>
-	{
-		data.coverImage && (
-			<div class='aspect-h-9 aspect-w-16 mb-10'>
-				<Image
-					alt={data.coverImage.alt}
-					class='object-cover'
-					fetchpriority='high'
-					loading='eager'
-					src={data.coverImage.src}
-				/>
-			</div>
-		)
-	}
-
-	<!-- Meta line -->
-	<div class='flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.1em] text-muted-foreground mb-6'>
-		{data.draft && <span class='text-destructive'>(Draft)</span>}
+<div id='post-hero'>
+	<p>
+		{data.draft && <span>(Draft) </span>}
 		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} />
-		<span>·</span>
-		<span>{remarkPluginFrontmatter.minutesRead}</span>
-		{
-			data.updatedDate && (
-				<>
-					<span>·</span>
-					<span>Updated <FormattedDate date={data.updatedDate} dateTimeOptions={dateTimeOptions} /></span>
-				</>
-			)
-		}
-	</div>
+		· {remarkPluginFrontmatter.minutesRead}
+		{data.updatedDate && <> · Updated <FormattedDate date={data.updatedDate} dateTimeOptions={dateTimeOptions} /></>}
+	</p>
 
-	<!-- Title -->
-	<h1 class='font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-relaxed !leading-[1.2] mb-6'>
-		{data.title}
-	</h1>
-
-	<!-- Tags -->
-	{
-		!!data.tags?.length && (
-			<div class='flex flex-wrap items-center gap-2'>
-				{data.tags.map((tag, i) => (
-					<a
-						aria-label={`View more blogs with the tag ${tag}`}
-						class:list={[
-							'text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent transition-colors px-2 py-1 border rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-							i % 2 === 0 ? 'border-accent/50 hover:border-accent' : 'border-accent-secondary/50 hover:border-accent-secondary'
-						]}
-						data-pagefind-filter='tag'
-						href={`/tags/${tag}/`}
-					>
-						{tag}
-					</a>
-				))}
-			</div>
-		)
-	}
+	<h1>{data.title}</h1>
+	{data.description && <p id='post-description'>{data.description}</p>}
 </div>
