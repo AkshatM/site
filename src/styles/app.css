@@ -104,6 +104,10 @@ p {
 	margin-bottom: 1rem;
 }
 
+u {
+	text-decoration-style: dashed;
+}
+
 /* ── Lists ── */
 ul,
 ol {
@@ -278,7 +282,8 @@ figcaption {
 	margin-bottom: 1.75rem;
 }
 
-#home-bio h3 {
+#home-bio h3,
+h4 {
 	margin-bottom: 0.8rem;
 }
 

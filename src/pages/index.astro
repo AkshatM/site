@@ -15,29 +15,57 @@ const allPostsByDate = sortMDByDate(allPosts)
 			<p id='home-role'>Senior Software Engineer · Boston, MA</p>
 
 			<div id='home-bio'>
-				<h3><code>.rodata</code></h3>
+				<h3><a href='https://share.google/aimode/gEdCAJrrrdochYlrr'><code>.data</code></a></h3>
+				<p>I turn complex distributed systems into friendly, reliable APIs.</p>
 				<p>
-					At <strong>Cloudflare</strong>, I shipped
-					<a href='https://blog.cloudflare.com/verified-bots-with-cryptography/'
-						>web bot authentication</a
-					> and its
-					<a href='https://github.com/cloudflare/web-bot-auth'>open-source libraries</a>, sped up
-					the adaptive routing platform behind
-					<a href='https://www.cloudflare.com/application-services/products/argo-smart-routing/'
+					Currently I work at <b>Cloudflare</b> on the <a
+						href='https://www.cloudflare.com/privacy-platform/'>Privacy Edge</a
+					> team. Over <u>7 years</u>, my work has spanned many domains.
+				</p>
+				<h4>Low-level networking</h4>
+				<p>
+					On the <a
+						href='https://www.cloudflare.com/application-services/products/argo-smart-routing/'
 						>Argo Smart Routing</a
-					>, and delivered the <a
-						href='https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/'
-						>privacy infrastructure</a
-					> for Apple Private Relay.
+					> team, I built global routing tables for TCP and UDP proxies, utilizing our own framing, connection-pooling
+					and tunneling logic.
 				</p>
 				<p>
-					At <strong>PlanGrid</strong> and <strong>Autodesk</strong>, I made reliability-critical
-					infrastructure safe, fast, and self-serve: automatic circuit breakers, canary platforms,
-					and disaster recovery.
+					I have traced TLS packet corruption with Wireshark and <code>mtr</code> to individual middleboxes;
+					written and deployed a packet parser for the <a
+						href='https://www.wikiwand.com/en/Multiprotocol_Label_Switching'>MPLS</a
+					> protocol; and measured wait times in the kernel queue by reading <a
+						href='http://localhost:4321/blog/socket-ancillary-data/'
+						>control messages from Linux sockets</a
+					>.
+				</p>
+				<h4>Systems design</h4>
+				<p>
+					I wrote and deployed the first <a href='https://github.com/cloudflare/web-bot-auth'
+						>Rust library</a
+					> for the <a href='https://datatracker.ietf.org/wg/webbotauth/about/'
+						>web bot auth protocol</a
+					>, which runs millions of times a second on Cloudflare's edge network.
+				</p>
+				<p>
+					As part of Brown research, I hacked <a
+						href='https://cs.brown.edu/courses/csci2390/2023/assign/project/report/2020/grpc-df-asserts.pdf'
+						>gRPC
+					</a> to guarantee only permitted call sites could remotely access PII.
 				</p>
 			</div>
 
-			<h3><code>.text</code></h3>
+			<h3>
+				<a href='https://share.google/aimode/D1LZpFGVzUmirSlNF'><code>.bss</code></a>
+			</h3>
+			<p>
+				I'm learning more about <a href='https://webrtcforthecurious.com/'>WebRTC</a> and inference engines
+				like <a href='https://github.com/vllm-project/vllm'>vLLM</a>.
+			</p>
+
+			<h3>
+				<a href='https://share.google/aimode/D1LZpFGVzUmirSlNF'><code>.text</code></a>
+			</h3>
 			{
 				allPostsByDate.length > 0 && (
 					<section id='home-posts' aria-label='Posts'>
@@ -64,6 +92,7 @@ const allPostsByDate = sortMDByDate(allPosts)
 
 		<nav id='home-nav' aria-label='Site navigation'>
 			<ul>
+				<li><a href='https://share.google/aimode/mguxifjQz5piy8Hbj'><code>.plt</code></a></li>
 				<li><a href='/resume.pdf'>Resume</a></li>
 				<li><a href='https://github.com/AkshatM' rel='noopener noreferrer'>GitHub</a></li>
 				<li>
