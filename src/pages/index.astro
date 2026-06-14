@@ -11,52 +11,36 @@ const allPostsByDate = sortMDByDate(allPosts)
 <PageLayout meta={{ title: 'Home' }}>
 	<div id='home'>
 		<div id='home-body'>
-			<h1>Akshat Mahajan</h1>
+			<h1>$ objdump -s 'Akshat Mahajan'</h1>
 			<p id='home-role'>Senior Software Engineer · Boston, MA</p>
 
 			<div id='home-bio'>
-				<h3><a href='https://share.google/aimode/gEdCAJrrrdochYlrr'><code>.data</code></a></h3>
-				<p>I turn complex distributed systems into friendly, reliable APIs.</p>
+				<h3><a href='https://share.google/aimode/x7FA7LYNqQsFphw2M'><code>.data</code></a></h3>
+				<p>I turn complex distributed systems into simple, reliable APIs.</p>
+				<p>
+					Over the last seven years, I've built routing protocols, data pipelines, platform
+					automations, privacy-preserving mechanisms, and benchmarking harnesses. I've run out of
+					inodes, seen packet corruption in real time, and learned why SSH breaks when you
+					<code>chmod 777 ~</code>.
+				</p>
 				<p>
 					Currently I work at <b>Cloudflare</b> on the <a
 						href='https://www.cloudflare.com/privacy-platform/'>Privacy Edge</a
-					> team. Over <u>7 years</u>, my work has spanned many domains.
-				</p>
-				<h4>Low-level networking</h4>
-				<p>
-					On the <a
-						href='https://www.cloudflare.com/application-services/products/argo-smart-routing/'
-						>Argo Smart Routing</a
-					> team, I built global routing tables for TCP and UDP proxies, utilizing our own framing, connection-pooling
-					and tunneling logic.
+					> team. I wrote and deployed the first <a
+						href='https://github.com/cloudflare/web-bot-auth'>Rust implementation</a
+					> for <a href='https://datatracker.ietf.org/wg/webbotauth/about/'>Web Bot Auth</a>,
+					powering Cloudflare's agent detection.
 				</p>
 				<p>
-					I have traced TLS packet corruption with Wireshark and <code>mtr</code> to individual middleboxes;
-					written and deployed a packet parser for the <a
-						href='https://www.wikiwand.com/en/Multiprotocol_Label_Switching'>MPLS</a
-					> protocol; and measured wait times in the kernel queue by reading <a
-						href='http://localhost:4321/blog/socket-ancillary-data/'
-						>control messages from Linux sockets</a
-					>.
-				</p>
-				<h4>Systems design</h4>
-				<p>
-					I wrote and deployed the first <a href='https://github.com/cloudflare/web-bot-auth'
-						>Rust library</a
-					> for the <a href='https://datatracker.ietf.org/wg/webbotauth/about/'
-						>web bot auth protocol</a
-					>, which runs millions of times a second on Cloudflare's edge network.
-				</p>
-				<p>
-					As part of Brown research, I hacked <a
-						href='https://cs.brown.edu/courses/csci2390/2023/assign/project/report/2020/grpc-df-asserts.pdf'
-						>gRPC
-					</a> to guarantee only permitted call sites could remotely access PII.
+					I care about good abstractions. I like getting close to the bits, understanding how things
+					behave under real constraints, and refining interfaces until they feel inevitable. But
+					formal elegance feels artificial to me. There is no better feeling than actually solving
+					someone’s problem.
 				</p>
 			</div>
 
 			<h3>
-				<a href='https://share.google/aimode/D1LZpFGVzUmirSlNF'><code>.bss</code></a>
+				<a href='https://share.google/aimode/futNbCmu63BwVKavZ'><code>.bss</code></a>
 			</h3>
 			<p>
 				I'm learning more about <a href='https://webrtcforthecurious.com/'>WebRTC</a> and inference engines
@@ -64,7 +48,7 @@ const allPostsByDate = sortMDByDate(allPosts)
 			</p>
 
 			<h3>
-				<a href='https://share.google/aimode/D1LZpFGVzUmirSlNF'><code>.text</code></a>
+				<a href='https://share.google/aimode/wluFHuuRuE9bXDzVL'><code>.text</code></a>
 			</h3>
 			{
 				allPostsByDate.length > 0 && (
